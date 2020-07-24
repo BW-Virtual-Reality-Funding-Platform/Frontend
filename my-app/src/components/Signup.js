@@ -8,8 +8,6 @@ const initialForm = {
 }
 
 const Signup = () => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
 
   const [credentials, setCredentials] = useState(initialForm)
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,10 +32,10 @@ const Signup = () => {
         axiosWithAuth()
           .post('/api/auth/login', credentials)
           .then(res => {
-            console.log(res);
+            console.log({res});
             localStorage.setItem('token', res.data.payload);
             setLoggedIn(true);
-            history.push('/Browse')
+            history.push('/browse')
           })
           .catch(err => {
             console.log(err);
