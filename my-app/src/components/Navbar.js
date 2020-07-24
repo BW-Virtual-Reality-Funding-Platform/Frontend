@@ -3,11 +3,12 @@ import '../App.css';
 import * as ReactBootstrap from 'react-bootstrap';
 import {
     BrowserRouter as Router,
-    Link
+    Link, useHistory 
 } from 'react-router-dom';
-
+import { LinkContainer } from 'react-router-bootstrap';
 
 const NavBar = () => {
+  const history = useHistory();
     return(
         <div className="App">
       <ReactBootstrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -26,7 +27,9 @@ const NavBar = () => {
       </ReactBootstrap.NavDropdown>
     </ReactBootstrap.Nav>
     <ReactBootstrap.Nav>
-      <ReactBootstrap.Nav.Link href="#signup">Sign up</ReactBootstrap.Nav.Link>
+    
+      <ReactBootstrap.Nav.Link href="/signup">Sign up</ReactBootstrap.Nav.Link>
+
       <ReactBootstrap.Nav.Link eventKey={2} href="#login">
         Log-in
       </ReactBootstrap.Nav.Link>
@@ -39,3 +42,8 @@ const NavBar = () => {
 
 
 export default NavBar
+
+
+// onClick={history.push("/signup")}
+
+// onClick={() => { history.push(/signup)}}
