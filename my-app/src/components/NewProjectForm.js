@@ -2,9 +2,20 @@ import React, { useState, useEffect } from "react";
 import * as ReactBootstrap from "react-bootstrap";
 import { InputGroup, FormControl, Form, Button } from "react-bootstrap";
 import axios from "axios";
+import * as yup from "yup";
 import "./NewProjectForm.css";
 
+const formSchema = yup.object().shape({
+  projectTitle: yup.string().required("Name is a required field."),
+  projectDescription: yup.string(),
+  goalAmount: yup.string(),
+  amountReceived: yup.string(),
+  fundingCompleted: yup.string(),
+});
+
 export default function NewProjectForm() {
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
   const [formState, setFormState] = useState({
     projectTitle: "",
     projectDescription: "",
@@ -12,6 +23,68 @@ export default function NewProjectForm() {
     amountReceived: "",
     fundingCompleted: "",
   });
+
+  const [errors, setErrors] = useState({
+    projectTitle: "",
+    projectDescription: "",
+    goalAmount: "",
+    amountReceived: "",
+    fundingCompleted: "",
+  });
+
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    formSchema.isValid(formState).then((valid) => {
+      setButtonDisabled(!valid);
+    });
+  }, [formState]);
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    axios.post().then((res) => {
+      setPost(res.data);
+      console.log("success", post);
+      setFormState({
+        projectTitle: "",
+        projectDescription: "",
+        goalAmount: "",
+        amountReceived: "",
+        fundingCompleted: "",
+      });
+    });
+  };
+
+  const validateChange = (e) => {
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.value)
+      .then((valid) => {
+        setErrors({
+          ...errors,
+          [e.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        setErrors({
+          ...errors,
+          [e.target.name]: err.errors[0],
+        });
+      });
+  };
+
+  const inputChange = (e) => {
+    e.persist();
+    const newFormData = {
+      ...formState,
+      [e.target.name]:
+        e.target.type === "checkbox" ? e.target.checked : e.target.value,
+    };
+
+    validateChange(e);
+    setFormState(newFormData);
+  };
+
   return (
     <div>
       <ReactBootstrap.Form>
@@ -36,9 +109,13 @@ export default function NewProjectForm() {
               aria-label="Project Title"
               aria-describedby="basic-addon2"
               type="text"
-              name="Project Title"
+              name="projectTitle"
               value={formState.projectTitle}
+              onChange={inputChange}
             />
+            {errors.projectTitle.length > 0 ? (
+              <p className="error">{errors.name}</p>
+            ) : null}
             <InputGroup.Append>
               <InputGroup.Text id="basic-addon2">PT</InputGroup.Text>
             </InputGroup.Append>
@@ -53,9 +130,13 @@ export default function NewProjectForm() {
               as="textarea"
               aria-label="With textarea"
               type="text"
-              name="Project Description"
+              name="projectDescription"
               value={formState.projectDescription}
+              onChange={inputChange}
             />
+            {errors.projectDescription.length > 0 ? (
+              <p className="error">{errors.name}</p>
+            ) : null}
           </InputGroup>
 
           <label>Goal Amount</label>
@@ -66,9 +147,13 @@ export default function NewProjectForm() {
             <FormControl
               aria-label="Amount (to the nearest dollar)"
               type="text"
-              name="Goal Amount"
+              name="goalAmount"
               value={formState.goalAmount}
+              onChange={inputChange}
             />
+            {errors.goalAmount.length > 0 ? (
+              <p className="error">{errors.name}</p>
+            ) : null}
             <InputGroup.Append>
               <InputGroup.Text>.00</InputGroup.Text>
             </InputGroup.Append>
@@ -82,9 +167,13 @@ export default function NewProjectForm() {
             <FormControl
               aria-label="Amount (to the nearest dollar)"
               type="text"
-              name="Amount Received"
+              name="amountReceived"
               value={formState.amountReceived}
+              onChange={inputChange}
             />
+            {errors.amountReceived.length > 0 ? (
+              <p className="error">{errors.name}</p>
+            ) : null}
             <InputGroup.Append>
               <InputGroup.Text>.00</InputGroup.Text>
             </InputGroup.Append>
