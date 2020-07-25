@@ -27,7 +27,7 @@ const NavBar = () => {
     </ReactBootstrap.Nav>
     <ReactBootstrap.Nav>
       <ReactBootstrap.Nav.Link >Sign up</ReactBootstrap.Nav.Link>
-      <ReactBootstrap.Nav.Link eventKey={2}as={Link} to={'/SignUp'}>
+      <ReactBootstrap.Nav.Link eventKey={2}as={Link} to={'/login'}>
         Log-in
       </ReactBootstrap.Nav.Link>
     </ReactBootstrap.Nav>

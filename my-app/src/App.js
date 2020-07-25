@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Browse from './components/Browse';
 import Features from './components/Features';
 import MoreInfo from './components/Moreinfo';
+import LoginForm from './components/LoginForm';
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,6 +32,8 @@ function App() {
           <Route path="/moreInfo" component={MoreInfo}/>
        
           <Route path="/signUp" component={SignUp}/>
+
+          <Route path="/login" component={LoginForm}/>
         </Switch>
     
     </div>
