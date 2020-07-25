@@ -68,45 +68,44 @@ export default function LoginForm() {
   };
   return (
     <div>
-      <ReactBootstrap.Form>
-        <Form className="login-form">
-          <h1>Login</h1>
-          <Form.Group controlId="formBasicUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Username"
-              name="username"
-              value={loginState.username}
-              onChange={inputChange}
-            />
-            {errors.username.length > 0 ? (
-              <p className="error">{errors.name}</p>
-            ) : null}
-            <Form.Text className="text-muted"></Form.Text>
-          </Form.Group>
+      <Form className="login-form" onSubmit={formSubmit}>
+        <h1>Login</h1>
+        <Form.Group controlId="formBasicUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            value={loginState.username}
+            onChange={inputChange}
+          />
+          {errors.username.length > 0 ? (
+            <p className="error">{errors.name}</p>
+          ) : null}
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Password"
-              name="password"
-              value={loginState.password}
-              onChange={inputChange}
-            />
-            {errors.password.length > 0 ? (
-              <p className="error">{errors.name}</p>
-            ) : null}
-          </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </ReactBootstrap.Form>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Password"
+            name="password"
+            value={loginState.password}
+            onChange={inputChange}
+          />
+          {errors.password.length > 0 ? (
+            <p className="error">{errors.name}</p>
+          ) : null}
+        </Form.Group>
+        <Form.Group controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+        <pre>{JSON.stringify(post, null, 2)}</pre>
+        <Button variant="primary" type="submit" disabled={buttonDisabled}>
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 }

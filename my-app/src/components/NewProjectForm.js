@@ -87,10 +87,9 @@ export default function NewProjectForm() {
 
   return (
     <div>
-      <ReactBootstrap.Form>
-        <Form className="project-form">
-          <h1>Create New Project</h1>
-          {/* <label>Enter Username</label>
+      <Form className="project-form" onSubmit={formSubmit}>
+        <h1>Create New Project</h1>
+        {/* <label>Enter Username</label>
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
@@ -102,90 +101,89 @@ export default function NewProjectForm() {
             />
           </InputGroup> */}
 
-          <label>Project Title</label>
-          <InputGroup className="mb-3">
-            <FormControl
-              placeholder="Project Title"
-              aria-label="Project Title"
-              aria-describedby="basic-addon2"
-              type="text"
-              name="projectTitle"
-              value={formState.projectTitle}
-              onChange={inputChange}
-            />
-            {errors.projectTitle.length > 0 ? (
-              <p className="error">{errors.name}</p>
-            ) : null}
-            <InputGroup.Append>
-              <InputGroup.Text id="basic-addon2">PT</InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
+        <label>Project Title</label>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Project Title"
+            aria-label="Project Title"
+            aria-describedby="basic-addon2"
+            type="text"
+            name="projectTitle"
+            value={formState.projectTitle}
+            onChange={inputChange}
+          />
+          {errors.projectTitle.length > 0 ? (
+            <p className="error">{errors.name}</p>
+          ) : null}
+          <InputGroup.Append>
+            <InputGroup.Text id="basic-addon2">PT</InputGroup.Text>
+          </InputGroup.Append>
+        </InputGroup>
 
-          <label>Project Description</label>
-          <InputGroup>
-            <InputGroup.Prepend>
-              <InputGroup.Text>PD</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              as="textarea"
-              aria-label="With textarea"
-              type="text"
-              name="projectDescription"
-              value={formState.projectDescription}
-              onChange={inputChange}
-            />
-            {errors.projectDescription.length > 0 ? (
-              <p className="error">{errors.name}</p>
-            ) : null}
-          </InputGroup>
+        <label>Project Description</label>
+        <InputGroup>
+          <InputGroup.Prepend>
+            <InputGroup.Text>PD</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            as="textarea"
+            aria-label="With textarea"
+            type="text"
+            name="projectDescription"
+            value={formState.projectDescription}
+            onChange={inputChange}
+          />
+          {errors.projectDescription.length > 0 ? (
+            <p className="error">{errors.name}</p>
+          ) : null}
+        </InputGroup>
 
-          <label>Goal Amount</label>
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text>$</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Amount (to the nearest dollar)"
-              type="text"
-              name="goalAmount"
-              value={formState.goalAmount}
-              onChange={inputChange}
-            />
-            {errors.goalAmount.length > 0 ? (
-              <p className="error">{errors.name}</p>
-            ) : null}
-            <InputGroup.Append>
-              <InputGroup.Text>.00</InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
+        <label>Goal Amount</label>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>$</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-label="Amount (to the nearest dollar)"
+            type="text"
+            name="goalAmount"
+            value={formState.goalAmount}
+            onChange={inputChange}
+          />
+          {errors.goalAmount.length > 0 ? (
+            <p className="error">{errors.name}</p>
+          ) : null}
+          <InputGroup.Append>
+            <InputGroup.Text>.00</InputGroup.Text>
+          </InputGroup.Append>
+        </InputGroup>
 
-          <label>Amount Received</label>
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text>$</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Amount (to the nearest dollar)"
-              type="text"
-              name="amountReceived"
-              value={formState.amountReceived}
-              onChange={inputChange}
-            />
-            {errors.amountReceived.length > 0 ? (
-              <p className="error">{errors.name}</p>
-            ) : null}
-            <InputGroup.Append>
-              <InputGroup.Text>.00</InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
+        <label>Amount Received</label>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>$</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-label="Amount (to the nearest dollar)"
+            type="text"
+            name="amountReceived"
+            value={formState.amountReceived}
+            onChange={inputChange}
+          />
+          {errors.amountReceived.length > 0 ? (
+            <p className="error">{errors.name}</p>
+          ) : null}
+          <InputGroup.Append>
+            <InputGroup.Text>.00</InputGroup.Text>
+          </InputGroup.Append>
+        </InputGroup>
 
-          <br></br>
-
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </ReactBootstrap.Form>
+        <br></br>
+        <pre>{JSON.stringify(post, null, 2)}</pre>
+        <Button variant="primary" type="submit" disabled={buttonDisabled}>
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 }
