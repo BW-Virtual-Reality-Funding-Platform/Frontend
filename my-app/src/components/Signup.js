@@ -26,6 +26,7 @@ const Register = (props) => {
             .then(res => {
                 console.log(res);
                 setUsers([...users, res.data])
+                history.push(`/login`);
              
               })
               .catch(err => console.log({ err }));
