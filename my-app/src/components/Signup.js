@@ -16,7 +16,7 @@ const signupParts = {
 const Register = (props) => {
     const history = useHistory();
     const [registerUser, setRegisterUser] = useState(signupParts)
-    const [users, setUsers] = useState([]);
+    const [user, setUser] = useState([]);
 
     const register = e => {
       e.preventDefault();
@@ -25,7 +25,7 @@ const Register = (props) => {
             .post("https://vr-lambdaschool.herokuapp.com/api/auth/register", registerUser)
             .then(res => {
                 console.log(res);
-                setUsers([...users, res.data])
+                setUser([...user, res.data])
                 history.push(`/login`);
              
               })
