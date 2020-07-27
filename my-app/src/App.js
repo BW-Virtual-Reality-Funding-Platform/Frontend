@@ -9,13 +9,14 @@ import MoreInfo from "./components/Moreinfo";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
 import LoginForm from "./components/LoginForm";
+import UpdateButton from "./components/UpdateButton"
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar />
       <NewProjectForm />
-      <LoginForm/>
+      <LoginForm/> */}
       <Router>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/login" component={LoginForm}>
             <LoginForm/>
+          </Route>
+          <Route path="/update" component={UpdateButton}>
+          <UpdateButton/>
           </Route>
         </Switch>
       </Router>
