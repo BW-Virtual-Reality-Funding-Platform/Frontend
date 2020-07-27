@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import * as ReactBootstrap from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import * as yup from "yup";
 import axios from "axios";
