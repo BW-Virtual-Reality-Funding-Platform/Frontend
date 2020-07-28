@@ -7,7 +7,7 @@ import "./NewProjectForm.css";
 const formSchema = yup.object().shape({
   projectTitle: yup
     .string()
-    .required("Project n                ame is a required field."),
+    .required("Project name is a required field."),
   projectDescription: yup.string(),
   goalAmount: yup.string(),
   amountReceived: yup.string(),
