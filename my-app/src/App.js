@@ -6,6 +6,9 @@ import Navbar from './components/Navbar';
 import Browse from './components/Browse';
 import Features from './components/Features';
 import MoreInfo from './components/Moreinfo';
+import LoginForm from './components/LoginForm';
+import PrivateRoute from './utils/PrivateRoute';
+import UpdateButton from './components/UpdateButton';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,9 +18,11 @@ import {
 
 function App() {
   return (
+    <Router>
     <div className="App">
+
         <Navbar />
-        <Router>
+       
 
 
         {/* A <Switch> looks through its children <Route>s and
@@ -36,8 +41,9 @@ function App() {
             <SignUp />
           </Route>
         </Switch>
-    </Router>
+    
     </div>
+    </Router>
   );
 }
 

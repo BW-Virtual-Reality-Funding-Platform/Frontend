@@ -16,8 +16,8 @@ const NavBar = () => {
   <ReactBootstrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <ReactBootstrap.Navbar.Collapse id="responsive-navbar-nav">
     <ReactBootstrap.Nav className="mr-auto">
-      <ReactBootstrap.Nav.Link href="/features">Features</ReactBootstrap.Nav.Link>
-      <ReactBootstrap.Nav.Link href="/browse">Browse</ReactBootstrap.Nav.Link>
+      <ReactBootstrap.Nav.Link as={Link} to={'/features'}>Features</ReactBootstrap.Nav.Link>
+      <ReactBootstrap.Nav.Link as={Link} to={'/browse'}>Browse</ReactBootstrap.Nav.Link>
       <ReactBootstrap.NavDropdown title="More Info" id="collasible-nav-dropdown">
         <ReactBootstrap.NavDropdown.Item href="#action/3.1">Create New Project</ReactBootstrap.NavDropdown.Item>
         <ReactBootstrap.NavDropdown.Item href="#action/3.2">Add Funds</ReactBootstrap.NavDropdown.Item>
@@ -38,8 +38,7 @@ const NavBar = () => {
 </ReactBootstrap.Navbar>
     </div>
   );
-}
-
+};
 
 export default NavBar
 
