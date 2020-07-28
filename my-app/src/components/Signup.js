@@ -44,23 +44,62 @@ const Register = (props) => {
 
     return (
       <div>
-        <form onSubmit={register}>
-          <input
-            type="text"
-            name="username"
-            value={registerUser.username}
-            onChange={changeHandler}
-          />
-          <input
-            type="password"
-            name="password"
-            value={registerUser.password}
-            onChange={changeHandler}
-          />
-          <button>Sign Up</button>
-        </form>
+        <h1>Sign Up</h1>
+     <form onSubmit={register} className="formSignUp">
+<ul>
+<li>
+    <label htmlFor="Name">Username:</label>
+    <input
+  placeholder="Create Username"
+  type="text"
+  name="username"
+  value={registerUser.username}
+  onChange={changeHandler}
+/>
+    </li>
+    </ul>
+    <ul>
+    <li>
+      <label htmlFor="Name">Password:</label>
+      <input
+  placeholder="Create Password"
+  type="password"
+  name="password"
+  value={registerUser.password}
+  onChange={changeHandler}
+/>
+    </li>
+    </ul>
+    <button className='submit-button'
+    type="submit">Register</button>
+
+</form> 
       </div>
     );
   }
 
 export default Register
+
+
+
+
+
+
+
+
+
+{/* <form onSubmit={register}>
+<input
+  type="text"
+  name="username"
+  value={registerUser.username}
+  onChange={changeHandler}
+/>
+<input
+  type="password"
+  name="password"
+  value={registerUser.password}
+  onChange={changeHandler}
+/>
+<button>Sign Up</button>
+</form> */}
