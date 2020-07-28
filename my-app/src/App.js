@@ -12,10 +12,11 @@ import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <Navbar />
-      <NewProjectForm />
-      <LoginForm/>
+      {/* <NewProjectForm />
+      <LoginForm/> */}
       <Router>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -29,12 +30,16 @@ function App() {
           <Route path="/MoreInfo" component={MoreInfo}>
             <MoreInfo />
           </Route>
-          <Route path="/SignUp" component={SignUp}>
+          <Route path="/signup" component={SignUp}>
             <SignUp />
+          </Route>
+          <Route path="/login" component={LoginForm}>
+            <LoginForm/>
           </Route>
         </Switch>
       </Router>
     </div>
+    </Router>
   );
 }
 

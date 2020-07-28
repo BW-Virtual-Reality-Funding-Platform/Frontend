@@ -44,10 +44,10 @@ const NavBar = () => {
             </ReactBootstrap.NavDropdown>
           </ReactBootstrap.Nav>
           <ReactBootstrap.Nav>
-            <ReactBootstrap.Nav.Link href="#signup">
+            <ReactBootstrap.Nav.Link href="/signup">
               Sign up
             </ReactBootstrap.Nav.Link>
-            <ReactBootstrap.Nav.Link eventKey={2} href="#login">
+            <ReactBootstrap.Nav.Link eventKey={2} href="/login">
               Log-in
             </ReactBootstrap.Nav.Link>
           </ReactBootstrap.Nav>

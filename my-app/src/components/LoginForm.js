@@ -28,7 +28,9 @@ export default function LoginForm() {
   }, [loginState]);
   const formSubmit = (e) => {
     e.preventDefault();
-    axios.post().then((res) => {
+    axios
+    .post()
+    .then((res) => {
       setPost(res.data);
       console.log("success", post);
       setLoginState({
