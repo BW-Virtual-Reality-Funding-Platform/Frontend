@@ -184,5 +184,4 @@ export default function NewProjectForm() {
         </Button>
       </Form>
     </div>
-  );
-}
+  );}
