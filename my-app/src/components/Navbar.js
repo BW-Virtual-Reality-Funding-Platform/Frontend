@@ -1,11 +1,7 @@
-import React from 'react';
-import '../App.css';
-import * as ReactBootstrap from 'react-bootstrap';
-import {
-    BrowserRouter as Router,
-    Link
-} from 'react-router-dom';
-
+import React from "react";
+import "../App.css";
+import * as ReactBootstrap from "react-bootstrap";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const NavBar = () => {
     return(
@@ -35,7 +31,6 @@ const NavBar = () => {
 </ReactBootstrap.Navbar>
     </div>
   );
-}
+};
 
-
-export default NavBar
+export default NavBar;

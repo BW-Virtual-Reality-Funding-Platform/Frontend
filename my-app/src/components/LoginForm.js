@@ -6,10 +6,12 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 
 export default function LoginForm() {
+
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
   });
+
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory()
 
@@ -81,5 +83,3 @@ const handleSubmit = e => {
   </div>
   );
 }
-
-
