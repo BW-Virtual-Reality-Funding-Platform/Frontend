@@ -60,6 +60,3 @@ const NavBar = () => {
 export default NavBar;
 
 
-// onClick={history.push("/signup")}
-
-// onClick={() => { history.push(/signup)}}
