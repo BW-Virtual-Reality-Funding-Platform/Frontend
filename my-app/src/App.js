@@ -7,6 +7,8 @@ import Browse from './components/Browse';
 import Features from './components/Features';
 import MoreInfo from './components/Moreinfo';
 import LoginForm from './components/LoginForm';
+import PrivateRoute from './utils/PrivateRoute';
+import UpdateButton from './components/UpdateButton';
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,13 +29,15 @@ function App() {
         <Switch>
           <Route path="/features" component={Features}/>
           
-          <Route path="/browse" component={Browse}/>
+          <PrivateRoute path="/browse" component={Browse}/>
           
           <Route path="/moreInfo" component={MoreInfo}/>
        
           <Route path="/signUp" component={SignUp}/>
 
           <Route path="/login" component={LoginForm}/>
+
+          <Route path="/update" component={UpdateButton}/>
         </Switch>
     
     </div>
