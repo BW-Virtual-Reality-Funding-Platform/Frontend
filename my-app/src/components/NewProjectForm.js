@@ -185,4 +185,3 @@ export default function NewProjectForm() {
       </Form>
     </div>
   );
-}
