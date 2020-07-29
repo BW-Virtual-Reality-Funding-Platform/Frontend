@@ -4,6 +4,8 @@ import { Form, Button } from "react-bootstrap";
 import "./LoginForm.css";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
+import Image from "react-bootstrap/Image";
+import Log from "./Log.jpg";
 
 export default function LoginForm() {
   const [loginState, setLoginState] = useState({
@@ -44,8 +46,21 @@ export default function LoginForm() {
   };
   return (
     <div>
+      <Image className="log-img" src={Log} />
+      <h6>
+        <span>
+          Photo by{" "}
+          <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Markus Spiske
+          </a>{" "}
+          on{" "}
+          <a href="https://unsplash.com/s/photos/log?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Unsplash
+          </a>
+        </span>
+      </h6>
       <Form className="login-form" onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1>Log-in</h1>
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -62,19 +77,16 @@ export default function LoginForm() {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Password"
             name="password"
             value={loginState.password}
             onChange={handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
 
         <Button variant="primary" type="submit">
-          Submit
+          Log-in
         </Button>
       </Form>
     </div>

@@ -3,8 +3,6 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import React, { useState} from 'react'
-import { connect } from "react-redux";
-import { PostRegister } from "../actions/index";
 
 
 const signupParts = {
@@ -22,14 +20,17 @@ const Register = (props) => {
 
     const register = e => {
       e.preventDefault();
-      props.PostRegister(registerUser)
-      history.push('/login');
-      setRegisterUser({
-
-          "username": "",
-          "password": ""
-      });
-  }
+      axiosWithAuth()
+      axios
+            .post("https://vr-lambdaschool.herokuapp.com/api/auth/register", registerUser)
+            .then(res => {
+                console.log(res);
+                setUser([...user, res.data])
+                history.push(`/login`);
+             
+              })
+              .catch(err => console.log({ err }));
+          };
     
 
     const changeHandler = ev => {
@@ -77,8 +78,8 @@ const Register = (props) => {
     );
   }
 
+export default Register
 
-      export default connect(null, { PostRegister: PostRegister })(Register);
 
 
 
