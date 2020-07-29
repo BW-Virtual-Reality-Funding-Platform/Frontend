@@ -85,7 +85,8 @@ export default Register
 
 
 
-
+// import { connect } from "react-redux";
+// import { PostRegister } from "../actions/index";
 
       //   const register = e => {
       //     e.preventDefault();
