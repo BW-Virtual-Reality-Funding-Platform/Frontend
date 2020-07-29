@@ -87,19 +87,16 @@ export default Register
 
 
 
+      //   const register = e => {
+      //     e.preventDefault();
+      //     PostRegister(registerUser);
+      //     history.push('/login');
+      //     setRegisterUser({
+    
+      //         "username": "",
+      //         "password": ""
+             
+      //     });
+      // }
 
-{/* <form onSubmit={register}>
-<input
-  type="text"
-  name="username"
-  value={registerUser.username}
-  onChange={changeHandler}
-/>
-<input
-  type="password"
-  name="password"
-  value={registerUser.password}
-  onChange={changeHandler}
-/>
-<button>Sign Up</button>
-</form> */}
+      // export default connect(null, { PostRegister: PostRegister })(Register);

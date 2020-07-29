@@ -9,6 +9,7 @@ import MoreInfo from "./components/Moreinfo";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
 import LoginForm from "./components/LoginForm";
+import UpdateButton from "./components/UpdateButton"
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/login" component={LoginForm}>
             <LoginForm/>
+          </Route>
+          <Route path="/updateproject/:id" >
+          <UpdateButton/>
           </Route>
         </Switch>
       </Router>
