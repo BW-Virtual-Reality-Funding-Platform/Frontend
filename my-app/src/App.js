@@ -6,17 +6,19 @@ import Navbar from "./components/Navbar";
 import Browse from "./components/Browse";
 import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
-import LoginForm from "./components/LoginForm";
-import PrivateRoute from "./utils/PrivateRoute";
-import UpdateButton from "./components/UpdateButton";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
+import LoginForm from "./components/LoginForm";
+import UpdateButton from "./components/UpdateButton"
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Navbar />
+    <div className="App">
+      <Navbar />
+      {/* <NewProjectForm />
+      <LoginForm/> */}
+      <Router>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -33,13 +35,14 @@ function App() {
             <SignUp />
           </Route>
           <Route path="/login" component={LoginForm}>
-            <LoginForm />
+            <LoginForm/>
           </Route>
-          <Route path="/newproject" component={NewProjectForm}>
-            <NewProjectForm />
+          <Route path="/updateproject/:id" >
+          <UpdateButton/>
           </Route>
         </Switch>
-      </div>
+      </Router>
+    </div>
     </Router>
   );
 }

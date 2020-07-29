@@ -16,7 +16,7 @@ const signupParts = {
 const Register = (props) => {
     const history = useHistory();
     const [registerUser, setRegisterUser] = useState(signupParts)
-    const [users, setUsers] = useState([]);
+    const [user, setUser] = useState([]);
 
     const register = e => {
       e.preventDefault();
@@ -25,7 +25,8 @@ const Register = (props) => {
             .post("https://vr-lambdaschool.herokuapp.com/api/auth/register", registerUser)
             .then(res => {
                 console.log(res);
-                setUsers([...users, res.data])
+                setUser([...user, res.data])
+                history.push(`/login`);
              
               })
               .catch(err => console.log({ err }));
@@ -43,23 +44,59 @@ const Register = (props) => {
 
     return (
       <div>
-        <form onSubmit={register}>
-          <input
-            type="text"
-            name="username"
-            value={registerUser.username}
-            onChange={changeHandler}
-          />
-          <input
-            type="password"
-            name="password"
-            value={registerUser.password}
-            onChange={changeHandler}
-          />
-          <button>Sign Up</button>
-        </form>
+        <h1>Sign Up</h1>
+     <form onSubmit={register} className="formSignUp">
+<ul>
+<li>
+    <label htmlFor="Name">Username:</label>
+    <input
+  placeholder="Create Username"
+  type="text"
+  name="username"
+  value={registerUser.username}
+  onChange={changeHandler}
+/>
+    </li>
+    </ul>
+    <ul>
+    <li>
+      <label htmlFor="Name">Password:</label>
+      <input
+  placeholder="Create Password"
+  type="password"
+  name="password"
+  value={registerUser.password}
+  onChange={changeHandler}
+/>
+    </li>
+    </ul>
+    <button className='submit-button'
+    type="submit">Register</button>
+
+</form> 
       </div>
     );
   }
 
 export default Register
+
+
+
+
+
+
+
+
+      //   const register = e => {
+      //     e.preventDefault();
+      //     PostRegister(registerUser);
+      //     history.push('/login');
+      //     setRegisterUser({
+    
+      //         "username": "",
+      //         "password": ""
+             
+      //     });
+      // }
+
+      // export default connect(null, { PostRegister: PostRegister })(Register);
