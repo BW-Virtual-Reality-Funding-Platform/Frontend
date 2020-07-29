@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Box.css";
 import { Card } from 'react-bootstrap';
+import axios from 'axios';
+
+const DashboardContainer = () => {
+    const [project, setProject] = useState([])
+    useEffect(() => {
+        axios.get('https://vr-lambdaschool.herokuapp.com/projects')
+        .then(response => {
+            setProject(response.data)
+        })
+        .catch(error => {console.log('error', error)})
+    }, [])}
 
 const Browse = () => {
     const cardInfo = [

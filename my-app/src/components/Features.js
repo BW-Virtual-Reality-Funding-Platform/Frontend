@@ -1,8 +1,10 @@
 import React from 'react';
 import "./Box.css";
 import { Card } from 'react-bootstrap';
+import axios from 'axios';
 
 const Features = () => {
+    
     const cardInfo = [
         {image: "https://media.playstation.com/is/image/SCEA/dead-by-daylight-listing-thumb-01-ps4-us-26may17?$Icon$", title: "Dead By Daylight", text: "We are trying to fund VR DbD"},
         {image: "https://www.roadtovr.com/wp-content/uploads/2020/02/vive-cosmos-elite-virtual-reality.jpg", title: "Monster Hunter", text: "We are trying to make Monster Hunter VR"},
