@@ -1,11 +1,9 @@
 import React from "react";
 import "../App.css";
 import * as ReactBootstrap from "react-bootstrap";
-import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
-import { LinkContainer } from "react-bootstrap";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const NavBar = () => {
-  const history = useHistory();
   return (
     <div className="App">
       <ReactBootstrap.Navbar
@@ -20,10 +18,10 @@ const NavBar = () => {
         <ReactBootstrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <ReactBootstrap.Navbar.Collapse id="responsive-navbar-nav">
           <ReactBootstrap.Nav className="mr-auto">
-            <ReactBootstrap.Nav.Link as={Link} to={"/features"}>
+            <ReactBootstrap.Nav.Link href="/features">
               Features
             </ReactBootstrap.Nav.Link>
-            <ReactBootstrap.Nav.Link as={Link} to={"/browse"}>
+            <ReactBootstrap.Nav.Link href="/browse">
               Browse
             </ReactBootstrap.Nav.Link>
             <ReactBootstrap.NavDropdown
@@ -49,7 +47,6 @@ const NavBar = () => {
             <ReactBootstrap.Nav.Link href="/signup">
               Sign up
             </ReactBootstrap.Nav.Link>
-
             <ReactBootstrap.Nav.Link eventKey={2} href="/login">
               Log-in
             </ReactBootstrap.Nav.Link>
@@ -62,6 +59,4 @@ const NavBar = () => {
 
 export default NavBar;
 
-// onClick={history.push("/signup")}
 
-// onClick={() => { history.push(/signup)}}
