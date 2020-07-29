@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import Image from 'react-bootstrap/Image';
+import Image from "react-bootstrap/Image";
 import "./Signup.css";
-import Signing2 from "./Signing2.jpg";
+import Signing3 from "./Signing3.jpg";
 
 const signupParts = {
   username: "",
@@ -43,12 +43,22 @@ const Register = (props) => {
 
   return (
     <div>
-
-      <Image className="signup-img" src={Signing2}/>
-      <h6></h6>
-      <Form className="signup-form"  onSubmit={register}>
+      <Image className="signup-img" src={Signing3} />
+      <h6>
+        <span>
+          Photo by{" "}
+          <a href="https://unsplash.com/@cathrynlavery?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Cathryn Lavery
+          </a>{" "}
+          on{" "}
+          <a href="https://unsplash.com/s/photos/signing?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Unsplash
+          </a>
+        </span>
+      </h6>
+      <Form className="signup-form" onSubmit={register}>
         <h1>Sign Up</h1>
-        
+
         <Form.Group>
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -69,7 +79,9 @@ const Register = (props) => {
             onChange={changeHandler}
           ></Form.Control>
         </Form.Group>
-        <Button variant='primary' type='submit'>Sign Up</Button>
+        <Button variant="primary" type="submit">
+          Sign Up
+        </Button>
       </Form>
     </div>
   );
