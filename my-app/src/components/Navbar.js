@@ -28,7 +28,7 @@ const NavBar = () => {
               title="More Info"
               id="collasible-nav-dropdown"
             >
-              <ReactBootstrap.NavDropdown.Item href="#action/3.1">
+              <ReactBootstrap.NavDropdown.Item href="/newproject">
                 Create New Project
               </ReactBootstrap.NavDropdown.Item>
               <ReactBootstrap.NavDropdown.Item href="#action/3.2">

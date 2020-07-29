@@ -85,19 +85,5 @@ export default Register
 
 
 
-// import { connect } from "react-redux";
-// import { PostRegister } from "../actions/index";
 
-      //   const register = e => {
-      //     e.preventDefault();
-      //     PostRegister(registerUser);
-      //     history.push('/login');
-      //     setRegisterUser({
-    
-      //         "username": "",
-      //         "password": ""
-             
-      //     });
-      // }
 
-      // export default connect(null, { PostRegister: PostRegister })(Register);
