@@ -37,6 +37,9 @@ function App() {
           <Route path="/login" component={LoginForm}>
             <LoginForm/>
           </Route>
+          <Route path="/newproject" component={NewProjectForm}>
+            <NewProjectForm/>
+          </Route>
           <Route path="/updateproject/:id" >
           <UpdateButton/>
           </Route>
