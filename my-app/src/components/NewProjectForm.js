@@ -3,11 +3,11 @@ import { InputGroup, FormControl, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import * as yup from "yup";
 import "./NewProjectForm.css";
+import Image from "react-bootstrap/Image";
+import Project from "./Project.jpg";
 
 const formSchema = yup.object().shape({
-  projectTitle: yup
-    .string()
-    .required("Project name is a required field."),
+  projectTitle: yup.string().required("Project name is a required field."),
   projectDescription: yup.string(),
   goalAmount: yup.string(),
   amountReceived: yup.string(),
@@ -90,6 +90,19 @@ export default function NewProjectForm() {
 
   return (
     <div>
+      <Image className="project-img" src={Project}></Image>
+      <h6>
+        <span>
+          Photo by{" "}
+          <a href="https://unsplash.com/@markuswinkler?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Markus Winkler
+          </a>{" "}
+          on{" "}
+          <a href="https://unsplash.com/s/photos/project?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Unsplash
+          </a>
+        </span>
+      </h6>
       <Form className="project-form" onSubmit={formSubmit}>
         <h1>Create New Project</h1>
         {/* <label>Enter Username</label>
@@ -182,7 +195,7 @@ export default function NewProjectForm() {
         </InputGroup>
 
         <br></br>
-        <pre>{JSON.stringify(post, null, 2)}</pre>
+
         <Button variant="primary" type="submit" disabled={buttonDisabled}>
           Submit
         </Button>
