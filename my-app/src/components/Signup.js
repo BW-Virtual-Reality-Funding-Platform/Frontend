@@ -54,6 +54,7 @@ const Register = (props) => {
           <Form.Control
             type="text"
             name="username"
+            placeholder="Register Username"
             value={registerUser.username}
             onChange={changeHandler}
           ></Form.Control>
@@ -63,6 +64,7 @@ const Register = (props) => {
           <Form.Control
             type="password"
             name="password"
+            placeholder="Register Password"
             value={registerUser.password}
             onChange={changeHandler}
           ></Form.Control>
