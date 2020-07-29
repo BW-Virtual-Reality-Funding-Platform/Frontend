@@ -45,6 +45,8 @@ const UpdateButton = (props) => {
         return (
             
             <form onSubmit={handleSubmit} className="formUpdate">
+              <ul>
+              <li>
                   <label htmlFor="Name">Title:</label>
                   <input className="name-input"
                     id="title"
@@ -54,6 +56,9 @@ const UpdateButton = (props) => {
                     value={updateProject.title}
                     onChange={handleChange}
                   />
+                  </li>
+                  </ul>
+                  <ul>
                   <li>
                     <label htmlFor="Name">Description:</label>
                   <input className="species-input"
@@ -65,6 +70,9 @@ const UpdateButton = (props) => {
                     onChange={handleChange}
                   />
                   </li>
+                  </ul>
+                  <ul>
+                  <li>
                     <label htmlFor="Name">Goal Amount:</label>
                   <input className="h2o-input"
                     id="goal_amount"
@@ -74,6 +82,10 @@ const UpdateButton = (props) => {
                     value={updateProject.goal_amount}
                     onChange={handleChange}
                   />
+                  </li>
+                  </ul>
+                  <ul>
+                  <li>
                     <label htmlFor="Name">Amount Received:</label>
                   <input className="image-input"
                     id="amount_received"
@@ -83,6 +95,8 @@ const UpdateButton = (props) => {
                     value={updateProject.amount_received}
                     onChange={handleChange}
                   />
+                  </li>
+                  </ul>
 
 
 
@@ -99,4 +113,4 @@ const UpdateButton = (props) => {
   
         export default UpdateButton
       
-   
+      

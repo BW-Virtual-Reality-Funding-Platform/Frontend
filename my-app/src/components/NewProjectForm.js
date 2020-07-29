@@ -5,11 +5,13 @@ import * as yup from "yup";
 import "./NewProjectForm.css";
 
 const formSchema = yup.object().shape({
-  projectTitle: yup.string().required("Name is a required field."),
+  projectTitle: yup
+    .string()
+    .required("Project name is a required field."),
   projectDescription: yup.string(),
   goalAmount: yup.string(),
   amountReceived: yup.string(),
-  fundingCompleted: yup.string(),
+  fundingCompleted: yup.boolean(),
 });
 
 export default function NewProjectForm() {
@@ -41,17 +43,19 @@ export default function NewProjectForm() {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    axios.post().then((res) => {
-      setPost(res.data);
-      console.log("success", post);
-      setFormState({
-        projectTitle: "",
-        projectDescription: "",
-        goalAmount: "",
-        amountReceived: "",
-        fundingCompleted: "",
+    axios
+      .post("https://vr-lambdaschool.herokuapp.com/:userId/projects")
+      .then((res) => {
+        setPost(res.data);
+        console.log("success", post);
+        setFormState({
+          projectTitle: "",
+          projectDescription: "",
+          goalAmount: "",
+          amountReceived: "",
+          fundingCompleted: "",
+        });
       });
-    });
   };
 
   const validateChange = (e) => {
@@ -153,7 +157,7 @@ export default function NewProjectForm() {
             <p className="error">{errors.name}</p>
           ) : null}
           <InputGroup.Append>
-            <InputGroup.Text>.00</InputGroup.Text>
+            {/* <InputGroup.Text>.00</InputGroup.Text> */}
           </InputGroup.Append>
         </InputGroup>
 
@@ -173,7 +177,7 @@ export default function NewProjectForm() {
             <p className="error">{errors.name}</p>
           ) : null}
           <InputGroup.Append>
-            <InputGroup.Text>.00</InputGroup.Text>
+            {/* <InputGroup.Text>.00</InputGroup.Text> */}
           </InputGroup.Append>
         </InputGroup>
 
@@ -185,4 +189,8 @@ export default function NewProjectForm() {
       </Form>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
