@@ -3,7 +3,9 @@ import "./Box.css";
 import { Card } from "react-bootstrap";
 import axios from "axios";
 
-const DashboardContainer = () => {
+
+
+const Browse = () => {
   const [project, setProject] = useState([]);
   useEffect(() => {
     axios
@@ -15,9 +17,7 @@ const DashboardContainer = () => {
         console.log("error", error);
       });
   }, []);
-};
 
-const Browse = () => {
   const cardInfo = [
     {
       image:
@@ -80,7 +80,7 @@ const Browse = () => {
   const renderCard = (card, index) => {
     return (
       <Card style={{ width: "18rem" }} key={index} className="box">
-        <Card.Img variant="top" src="holder.js/100px180" src={card.image} />
+        <Card.Img variant="top" src={card.image} />
         <Card.Body>
           <Card.Title>{card.title}</Card.Title>
           <Card.Text>{card.text}</Card.Text>
