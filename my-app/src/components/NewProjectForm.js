@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { InputGroup, FormControl, Form, Button } from "react-bootstrap";
-import axios from "axios";
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 import * as yup from "yup";
 import "./NewProjectForm.css";
 import Image from "react-bootstrap/Image";
 import Project from "./Project.jpg";
+import {useParams} from 'react-router-dom'
 
 const formSchema = yup.object().shape({
   projectImage: yup.string(),
@@ -16,7 +17,7 @@ const formSchema = yup.object().shape({
 });
 
 export default function NewProjectForm() {
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+//   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
     projectImage: "",
@@ -40,14 +41,16 @@ export default function NewProjectForm() {
 
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
-      setButtonDisabled(!valid);
+    //   setButtonDisabled(!valid);
     });
   }, [formState]);
 
+  const {userId} = useParams()
+
   const formSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://vr-lambdaschool.herokuapp.com/:userId/projects")
+    axiosWithAuth()
+      .post(`/${userId}/projects`)
       .then((res) => {
         setPost(res.data);
         console.log("success", post);
@@ -204,7 +207,7 @@ export default function NewProjectForm() {
 
         <br></br>
 
-        <Button variant="primary" type="submit" disabled={buttonDisabled}>
+        <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
