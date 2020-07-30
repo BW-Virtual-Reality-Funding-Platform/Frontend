@@ -7,7 +7,7 @@ import Image from "react-bootstrap/Image";
 import Project from "./Project.jpg";
 
 const formSchema = yup.object().shape({
-  projectImg: yup.string(),
+  projectImage: yup.string(),
   projectTitle: yup.string().required("Project name is a required field."),
   projectDescription: yup.string(),
   goalAmount: yup.string(),
@@ -52,6 +52,7 @@ export default function NewProjectForm() {
         setPost(res.data);
         console.log("success", post);
         setFormState({
+          projectImage: "",
           projectTitle: "",
           projectDescription: "",
           goalAmount: "",
@@ -111,7 +112,7 @@ export default function NewProjectForm() {
         <label>Enter Username</label>
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
-  <InputGroup.Text id="basic-addon1">Image</InputGroup.Text>
+            <InputGroup.Text id="basic-addon1">Image</InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
             placeholder="Paste Image URL"
