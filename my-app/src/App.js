@@ -15,8 +15,6 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        {/* <NewProjectForm />
-      <LoginForm/> */}
         <Router>
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -35,6 +33,9 @@ function App() {
           </Route>
           <Route path="/login" component={LoginForm}>
             <LoginForm/>
+          </Route>
+          <Route path="/newproject" component={NewProjectForm}>
+            <NewProjectForm/>
           </Route>
           <Route path="/updateproject/:id" >
           <UpdateButton/>
