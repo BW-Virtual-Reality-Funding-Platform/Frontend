@@ -189,8 +189,4 @@ export default function NewProjectForm() {
       </Form>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
