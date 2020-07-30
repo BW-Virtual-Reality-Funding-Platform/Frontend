@@ -1,14 +1,14 @@
 
 import React, {useEffect, useState, useReducer} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-
+import {Link} from 'react-router-dom'
 
 
 const Browse2 = props => {
 
 
 
-    const [proyects, setProyects] = useState([])
+    const [projects, setProyects] = useState([])
     const [stop, setStop] = useState(false)
 
  
@@ -22,7 +22,7 @@ const Browse2 = props => {
             .catch(err => {
                 console.log(err.message);
             });
-        }, [stop]);
+        }, []);
 
 
 
@@ -31,18 +31,17 @@ const Browse2 = props => {
         <div className="container-fluid">
             <h2 className="m-5">Your Projects:</h2>
 
-            {proyects.map((proyect) =>  
-                <div key={proyect.id}  >
+            {projects.map((project) =>  
+                <div key={project.project_id}  >
                          <ul className="list-group">
-                        <li class="list-group-item">Title: {proyect.title} </li>
-                        <li class="list-group-item">Description: {proyect.description} </li>
-                        <li class="list-group-item">Goal: {proyect.goal_amount}</li>
-                        <li class="list-group-item">Currently: {proyect.amount_received} </li>
-                        <li class="list-group-item">Completed: {proyect.funding_completed} </li>
-                       
+                        <li class="list-group-item">Title: {project.title} </li>
+                        <li class="list-group-item">Description: {project.description} </li>
+                        <li class="list-group-item">Goal: {project.goal_amount}</li>
+                        <li class="list-group-item">Currently: {project.amount_received} </li>
+                        <li class="list-group-item">Completed: {project.funding_completed} </li>
+                        <Link to={`/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
+                        
                     </ul>
-                  
-        
                 </div>
             )}
         </div>

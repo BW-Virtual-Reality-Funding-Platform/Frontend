@@ -36,7 +36,7 @@ function App() {
           <Route path="/login" component={LoginForm}>
             <LoginForm/>
           </Route>
-          <Route path="/updateproject/:id" >
+          <Route path="/updateproject/:id" component={UpdateButton}>
           <UpdateButton/>
           </Route>
         </Switch>

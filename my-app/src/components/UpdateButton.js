@@ -10,25 +10,27 @@ const projectSettings = {
     description: '',
     goal_amount: '',
     amount_received: '',
+    img_url: '',
     funding_completed: false,
+   
 }
 
 const UpdateButton = (props) => {
     const [updateProject, setUpdateProject] = useState(projectSettings);
 
     const {id} = useParams()
-    const {user} = useParams()
+    const {projects_id} = useParams()
     const history = useHistory()
+    
   
       const handleSubmit = (event) => {
         event.preventDefault();
         axiosWithAuth()
-        axios
-            .put(`/${user.id}/projects/${id}`, updateProject)
+            .put(`/:userId/projects/${id}`, updateProject)
             .then(res => {
                 setUpdateProject(res.data);
-                history.push("/browse")
-                console.log(res);
+                history.push("/browse2")
+                console.log(res.data);
             })
             .catch(err => {
                 console.log(err.message);
@@ -48,7 +50,7 @@ const UpdateButton = (props) => {
               <ul>
               <li>
                   <label htmlFor="Name">Title:</label>
-                  <input className="name-input"
+                  <input className="title-input"
                     id="title"
                     type="text"
                     name="title"
@@ -61,7 +63,7 @@ const UpdateButton = (props) => {
                   <ul>
                   <li>
                     <label htmlFor="Name">Description:</label>
-                  <input className="species-input"
+                  <input className="description-input"
                     id="description"
                     type="text"
                     name="description"
@@ -74,7 +76,7 @@ const UpdateButton = (props) => {
                   <ul>
                   <li>
                     <label htmlFor="Name">Goal Amount:</label>
-                  <input className="h2o-input"
+                  <input className="goal-input"
                     id="goal_amount"
                     type="text"
                     name="goal_amount"
@@ -87,12 +89,25 @@ const UpdateButton = (props) => {
                   <ul>
                   <li>
                     <label htmlFor="Name">Amount Received:</label>
-                  <input className="image-input"
+                  <input className="amount-input"
                     id="amount_received"
                     type="text"
                     name="amount_received"
                     placeholder="Please Enter the New Amount Received:"
                     value={updateProject.amount_received}
+                    onChange={handleChange}
+                  />
+                  </li>
+                  </ul>          
+                  <ul>
+                  <li>
+                    <label htmlFor="Name">Image:</label>
+                  <input className="image-input"
+                    id="ss"
+                    type="text"
+                    name="ss"
+                    placeholder="Please Enter the New Image:"
+                    value={updateProject.img_url}
                     onChange={handleChange}
                   />
                   </li>

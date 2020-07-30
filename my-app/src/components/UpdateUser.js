@@ -19,8 +19,7 @@ const UpdateUser = (props) => {
       const handleSubmit = (event) => {
         event.preventDefault();
         axiosWithAuth()
-        axios
-            .put(`/api/users/${user.id}`, updateUser)
+            .put(`/api/users/${id}`, updateUser)
             .then(res => {
                 setUpdateUser(res.data);
                 history.push("/login")

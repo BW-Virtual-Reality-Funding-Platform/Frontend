@@ -7,6 +7,7 @@ import "./NewProjectForm.css";
 import Image from "react-bootstrap/Image";
 import Project from "./Project.jpg";
 
+
 const formSchema = yup.object().shape({
   projectTitle: yup.string().required("Project name is a required field."),
   projectDescription: yup.string(),
