@@ -22,7 +22,7 @@ const Features = () => {
     const renderCard = (card, index) => {
         return(
             <Card style={{ width: '18rem' }} key = {index} className = "box">
-                <Card.Img variant="top" src= {card.image} />
+                <Card.Img variant="top" src={card.image} />
                 <Card.Body>
                     <Card.Title>{card.title}</Card.Title>
                     <Card.Text>{card.text}</Card.Text>

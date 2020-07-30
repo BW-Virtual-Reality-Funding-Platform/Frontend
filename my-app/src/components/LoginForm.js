@@ -77,7 +77,7 @@ export default function LoginForm() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             name="password"
             value={loginState.password}
             onChange={handleChange}
