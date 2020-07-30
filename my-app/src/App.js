@@ -6,7 +6,6 @@ import Browse2 from "./components/Browse2";
 import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
-import NewProjectForm from "./components/NewProjectForm";
 import LoginForm from "./components/LoginForm";
 import UpdateButton from "./components/UpdateButton";
 
