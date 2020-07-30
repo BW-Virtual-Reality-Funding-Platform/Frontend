@@ -4,4 +4,10 @@
     padding: 15px;
     margin: auto;
     height: 100%;
+    /* margin-top: 10%; */
+}
+
+.log-img{
+    margin-top: 1%;
+    border: solid black 1px;
 }

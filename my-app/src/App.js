@@ -1,30 +1,31 @@
 import React from "react";
 import "./App.css";
-import * as ReactBootstrap from "react-bootstrap";
 import SignUp from "./components/Signup";
 import Navbar from "./components/Navbar";
-import Browse from "./components/Browse";
+import Browse2 from "./components/Browse2";
 import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
-import LoginForm from "./components/LoginForm";
-import PrivateRoute from "./utils/PrivateRoute";
-import UpdateButton from "./components/UpdateButton";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
+import LoginForm from "./components/LoginForm";
+import UpdateButton from "./components/UpdateButton";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
-        {/* A <Switch> looks through its children <Route>s and
+        {/* <NewProjectForm />
+      <LoginForm/> */}
+        <Router>
+          {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/features" component={Features}>
             <Features />
           </Route>
-          <Route path="/browse" component={Browse}>
-            <Browse />
+          <Route path="/browse2" component={Browse2}>
+            <Browse2 />
           </Route>
           <Route path="/moreinfo" component={MoreInfo}>
             <MoreInfo />
@@ -33,13 +34,14 @@ function App() {
             <SignUp />
           </Route>
           <Route path="/login" component={LoginForm}>
-            <LoginForm />
+            <LoginForm/>
           </Route>
-          <Route path="/newproject" component={NewProjectForm}>
-            <NewProjectForm />
+          <Route path="/updateproject/:id" >
+          <UpdateButton/>
           </Route>
         </Switch>
-      </div>
+      </Router>
+    </div>
     </Router>
   );
 }

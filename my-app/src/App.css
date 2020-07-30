@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.formSignUp{
+  margin-top: 50px;
+}
+.list-group-item{
+  color: red
+}

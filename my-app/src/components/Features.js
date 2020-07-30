@@ -2,7 +2,9 @@ import React from 'react';
 import "./Box.css";
 import { Card } from 'react-bootstrap';
 
+
 const Features = () => {
+    
     const cardInfo = [
         {image: "https://media.playstation.com/is/image/SCEA/dead-by-daylight-listing-thumb-01-ps4-us-26may17?$Icon$", title: "Dead By Daylight", text: "We are trying to fund VR DbD"},
         {image: "https://www.roadtovr.com/wp-content/uploads/2020/02/vive-cosmos-elite-virtual-reality.jpg", title: "Monster Hunter", text: "We are trying to make Monster Hunter VR"},
@@ -20,7 +22,7 @@ const Features = () => {
     const renderCard = (card, index) => {
         return(
             <Card style={{ width: '18rem' }} key = {index} className = "box">
-                <Card.Img variant="top" src="holder.js/100px180" src= {card.image} />
+                <Card.Img variant="top" src={card.image} />
                 <Card.Body>
                     <Card.Title>{card.title}</Card.Title>
                     <Card.Text>{card.text}</Card.Text>
