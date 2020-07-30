@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
-import * as ReactBootstrap from "react-bootstrap";
 import SignUp from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Browse from "./components/Browse";
 import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
 import LoginForm from "./components/LoginForm";
 import UpdateButton from "./components/UpdateButton"
