@@ -40,8 +40,6 @@ const Browse2 = props => {
                         <li class="list-group-item">Currently: {proyect.amount_received} </li>
                         <li class="list-group-item">Completed: {proyect.funding_completed} </li>
                        
-                    
-
                     </ul>
                   
         
