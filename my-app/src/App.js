@@ -3,7 +3,7 @@ import "./App.css";
 import * as ReactBootstrap from "react-bootstrap";
 import SignUp from "./components/Signup";
 import Navbar from "./components/Navbar";
-import Browse from "./components/Browse";
+import Browse2 from "./components/Browse2";
 import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -25,8 +25,8 @@ function App() {
           <Route path="/features" component={Features}>
             <Features />
           </Route>
-          <Route path="/browse" component={Browse}>
-            <Browse />
+          <Route path="/browse2" component={Browse2}>
+            <Browse2 />
           </Route>
           <Route path="/moreinfo" component={MoreInfo}>
             <MoreInfo />
@@ -36,9 +36,6 @@ function App() {
           </Route>
           <Route path="/login" component={LoginForm}>
             <LoginForm/>
-          </Route>
-          <Route path="/newproject" component={NewProjectForm}>
-            <NewProjectForm/>
           </Route>
           <Route path="/updateproject/:id" >
           <UpdateButton/>

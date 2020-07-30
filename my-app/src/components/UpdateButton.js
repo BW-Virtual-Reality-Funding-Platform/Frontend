@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import "../App.css";
 import {useParams, useHistory} from 'react-router-dom'
