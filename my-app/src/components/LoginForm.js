@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import * as ReactBootstrap from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import "./LoginForm.css";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
@@ -78,7 +77,7 @@ export default function LoginForm() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             name="password"
             value={loginState.password}
             onChange={handleChange}

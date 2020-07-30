@@ -1,25 +1,24 @@
 import React from "react";
 import "./App.css";
-import * as ReactBootstrap from "react-bootstrap";
 import SignUp from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Browse2 from "./components/Browse2";
 import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
 import LoginForm from "./components/LoginForm";
-import UpdateButton from "./components/UpdateButton"
+import UpdateButton from "./components/UpdateButton";
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <Navbar />
-      {/* <NewProjectForm />
+      <div className="App">
+        <Navbar />
+        {/* <NewProjectForm />
       <LoginForm/> */}
-      <Router>
-        {/* A <Switch> looks through its children <Route>s and
+        <Router>
+          {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/features" component={Features}>
