@@ -4,7 +4,6 @@ import { Card } from "react-bootstrap";
 import axios from "axios";
 
 
-
 const Browse = () => {
   const [project, setProject] = useState([]);
   useEffect(() => {
@@ -17,7 +16,6 @@ const Browse = () => {
         console.log("error", error);
       });
   }, []);
-
   const cardInfo = [
     {
       image:
@@ -103,7 +101,6 @@ const Browse = () => {
                 <div className="box box8"></div>
                 <div className="box box9"></div> */}
       {/* <div className="box box10"></div> */}
-
       {cardInfo.map(renderCard)}
     </div>
     // </div> */}
