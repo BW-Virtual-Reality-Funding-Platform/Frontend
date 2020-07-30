@@ -37,7 +37,7 @@ export default function NewProjectForm() {
   const [post, setPost] = useState([]);
 
   useEffect(() => {
-    formSchema.isValid(formState).then((valid) => {
+    formSchema.isValid(formState).then(valid => {
       setButtonDisabled(!valid);
     });
   }, [formState]);
