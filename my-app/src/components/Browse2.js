@@ -5,11 +5,10 @@ import "./Box.css";
 import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
 
 
-
 const Browse2 = props => {
 
     const [projects, setProjects] = useState([])
-    
+
     useEffect(() => {
         axiosWithAuth()
             .get(`https://vr-lambdaschool.herokuapp.com/projects`)
