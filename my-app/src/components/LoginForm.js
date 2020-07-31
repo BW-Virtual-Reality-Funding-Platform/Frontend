@@ -12,8 +12,9 @@ export default function LoginForm() {
     password: "",
   });
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [LoggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
+  console.log(LoggedIn)
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.name]: e.target.value });
