@@ -21,7 +21,7 @@ const NavBar = () => {
             <ReactBootstrap.Nav.Link href="/features">
               Features
             </ReactBootstrap.Nav.Link>
-            <ReactBootstrap.Nav.Link href="/browse">
+            <ReactBootstrap.Nav.Link href="/browse2">
               Browse
             </ReactBootstrap.Nav.Link>
             <ReactBootstrap.NavDropdown

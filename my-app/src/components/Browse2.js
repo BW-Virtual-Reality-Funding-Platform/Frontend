@@ -1,48 +1,54 @@
 
-import React, {useEffect, useState, useReducer} from 'react'
+import React, {useEffect, useState} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-
+import "./Box.css";
+import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
+import {useParams} from 'react-router-dom';
 
 
 const Browse2 = props => {
 
+    const [projects, setProjects] = useState([])
+    const {userID} = useParams()
 
-
-    const [proyects, setProyects] = useState([])
-    const [stop, setStop] = useState(false)
+    
 
  
     useEffect(() => {
         axiosWithAuth()
-            .get(`https://vr-lambdaschool.herokuapp.com/projects`)
+        .get(`/${userID}/projects`)
+            // .get(`https://vr-lambdaschool.herokuapp.com/projects`)
             .then(res => {
-                setProyects(res.data);
+                setProjects(res.data);
                 console.log(res);
             })
             .catch(err => {
                 console.log(err.message);
             });
-        }, [stop]);
+        }, []);
 
 
 
 
     return (
-        <div className="container-fluid">
+        <div className="grid">
             <h2 className="m-5">Your Projects:</h2>
 
-            {proyects.map((proyect) =>  
-                <div key={proyect.id}  >
-                         <ul className="list-group">
-                        <li class="list-group-item">Title: {proyect.title} </li>
-                        <li class="list-group-item">Description: {proyect.description} </li>
-                        <li class="list-group-item">Goal: {proyect.goal_amount}</li>
-                        <li class="list-group-item">Currently: {proyect.amount_received} </li>
-                        <li class="list-group-item">Completed: {proyect.funding_completed} </li>
-                       
-                    </ul>
-                  
-        
+            {projects.map((project) =>  
+                <div key={project.id}  >
+                <Card style={{ width: '30rem' }} className="box">
+                    <Card.Img variant="top" src = {project.img_url} />
+                    <Card.Body>
+                    <Card.Title>{project.title}</Card.Title>
+                    {/* <Card.Text>{card.text}</Card.Text> */}
+                </Card.Body>
+                    <ListGroup className="list-group-flush">
+                    <ListGroupItem>{project.description}</ListGroupItem>
+                    <ListGroupItem>{project.goal_amount}</ListGroupItem>
+                    <ListGroupItem>{project.amount_received}</ListGroupItem>
+                    <ListGroupItem>{project.funding_completed}</ListGroupItem>
+                </ListGroup>
+                </Card>
                 </div>
             )}
         </div>
