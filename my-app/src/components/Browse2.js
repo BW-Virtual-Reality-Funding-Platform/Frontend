@@ -30,7 +30,7 @@ const userId = useParams()
             .catch(err => {
                 console.log(err.message);
             });
-        }, [userID]);
+        }, []);
 
 
 
@@ -54,7 +54,7 @@ const userId = useParams()
                     <ListGroupItem>{project.funding_completed}</ListGroupItem>
                     <Link to={`/${props.userInfo.id}/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
                 </ListGroup>
-                <Button onClick={deleteProject}>Delete Project</Button>
+                
                 </Card>
                 </div>
             )}
