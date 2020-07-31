@@ -25,7 +25,7 @@ const Browse2 = props => {
     useEffect(() => {
         axiosWithAuth()
         .get(`/${userID}/projects`)
-            // .get(`https://vr-lambdaschool.herokuapp.com/projects`)
+            //.get(`https://vr-lambdaschool.herokuapp.com/projects`)
             .then(res => {
                 setProjects(res.data);
                 console.log(res);
