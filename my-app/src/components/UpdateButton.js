@@ -26,10 +26,10 @@ const UpdateButton = (props) => {
       const handleSubmit = (event) => {
         event.preventDefault();
         axiosWithAuth()
-            .put(`/${userID}/projects/${id}`, updateProject)
+            .put(`/${props.userInfo.id}/projects/${id}`, updateProject)
             .then(res => {
                 setUpdateProject(res.data);
-                history.push("/browse2")
+                history.push(":userId/browse2")
                 console.log(res.data);
             })
             .catch(err => {
@@ -43,6 +43,8 @@ const UpdateButton = (props) => {
         ({ ...updateProject,
          [event.target.name]: event.target.value });
       };
+
+      
 
         return (
             

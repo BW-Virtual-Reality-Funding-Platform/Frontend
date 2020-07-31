@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, {useState} from 'react';
 import "./App.css";
 import SignUp from "./components/Signup";
 import Navbar from "./components/Navbar";
@@ -7,12 +8,26 @@ import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
+import NewProjectForm2 from "./components/NewProjectForm2";
 import LoginForm from "./components/LoginForm";
 import UpdateButton from "./components/UpdateButton";
 import ManageUser from "./components/ManageUser"
 import UpdateUser from "./components/UpdateUser"
 
+
 function App() {
+
+
+  const [userInfo, setUserInfo] = useState({
+    username: '',
+    password: '',
+    id: null
+  })
+
+
+
+
+  
   return (
     <Router>
       <div className="App">
@@ -24,8 +39,8 @@ function App() {
           <Route path="/features" component={Features}>
             <Features />
           </Route>
-          <Route path="/:userID/browse2" component={Browse2}>
-            <Browse2 />
+          <Route path="/:userId/browse2" component={Browse2}>
+            <Browse2 userInfo={userInfo} />
           </Route>
           <Route path="/moreinfo" component={MoreInfo}>
             <MoreInfo />
@@ -34,16 +49,22 @@ function App() {
             <SignUp />
           </Route>
           <Route path="/login" component={LoginForm}>
-            <LoginForm/>
+            <LoginForm userInfo={userInfo} setUserInfo={setUserInfo} />
           </Route>
-          <Route path="/:userID/updateproject/:id" component={UpdateButton}>
+          <Route path="/:userId/updateproject/:id" component={UpdateButton}>
           <UpdateButton/>
           </Route>
           <Route path="/manageuser" component={ManageUser}>
             <ManageUser/>
           </Route>
-          <Route path="/updateuser/:userID" component={UpdateUser}>
-            <UpdateUser/>
+          <Route path=":userId/updateuser/:id" component={UpdateUser}>
+            <UpdateUser userInfo={userInfo}/>
+           </Route>
+           <Route path="/:userId/newproject" component={NewProjectForm}>
+             <NewProjectForm userInfo={userInfo}/>
+           </Route>
+           <Route path="/:userId/newproject2" component={NewProjectForm2}>
+             <NewProjectForm2 userInfo={userInfo}/>
            </Route>
           </Switch>
          </Router>

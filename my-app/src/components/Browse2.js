@@ -1,25 +1,30 @@
 
 import React, {useEffect, useState} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import "./Box.css";
+import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
+import {useParams} from 'react-router-dom';
 import {Link} from 'react-router-dom'
-import {useParams, useHistory} from 'react-router-dom'
-
-const Browse2 = props => {
+import axios from 'axios'
 
 
+const Browse2 = (props) => {
 
-    const [projects, setProyects] = useState([])
- 
+    const [projects, setProjects] = useState([])
+    
+const userId = useParams()
 
-    const history = useHistory()
-    const {userID} = useParams()
+    
+    
 
- 
+
+
     useEffect(() => {
         axiosWithAuth()
-            .get(`/${userID}/projects`)
+        .get(`https://vr-lambdaschool.herokuapp.com/${props.userInfo.id}/projects `)
             .then(res => {
-                setProyects(res.data);
+                setProjects(res.data);
+                console.log(userId)
                 console.log(res);
             })
             .catch(err => {
@@ -31,20 +36,25 @@ const Browse2 = props => {
 
 
     return (
-        <div className="container-fluid">
+        <div className="grid">blablablsa
             <h2 className="m-5">Your Projects:</h2>
 
             {projects.map((project) =>  
-                <div key={project.project_id} key2={project.user_id} >
-                         <ul className="list-group">
-                        <li class="list-group-item">Title: {project.title} </li>
-                        <li class="list-group-item">Description: {project.description} </li>
-                        <li class="list-group-item">Goal: {project.goal_amount}</li>
-                        <li class="list-group-item">Currently: {project.amount_received} </li>
-                        <li class="list-group-item">Completed: {project.funding_completed} </li>
-                        <Link to={`/${project.user_id}/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
-                        
-                    </ul>
+                <div key={project.id}  >
+                <Card style={{ width: '30rem' }} className="box">
+                    <Card.Img variant="top" src = {project.img_url} />
+                    <Card.Body>
+                    <Card.Title>{project.title}</Card.Title>
+                    {/* <Card.Text>{card.text}</Card.Text> */}
+                </Card.Body>
+                    <ListGroup className="list-group-flush">
+                    <ListGroupItem>{project.description}</ListGroupItem>
+                    <ListGroupItem>{project.goal_amount}</ListGroupItem>
+                    <ListGroupItem>{project.amount_received}</ListGroupItem>
+                    <ListGroupItem>{project.funding_completed}</ListGroupItem>
+                    <Link to={`/${props.userInfo.id}/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
+                </ListGroup>
+                </Card>
                 </div>
             )}
         </div>

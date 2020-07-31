@@ -21,14 +21,14 @@ const NavBar = () => {
             <ReactBootstrap.Nav.Link href="/features">
               Features
             </ReactBootstrap.Nav.Link>
-            <ReactBootstrap.Nav.Link href="/browse2">
+            <ReactBootstrap.Nav.Link href="/:userId/browse2">
               Browse
             </ReactBootstrap.Nav.Link>
             <ReactBootstrap.NavDropdown
               title="More Info"
               id="collasible-nav-dropdown"
             >
-              <ReactBootstrap.NavDropdown.Item href="/newproject">
+              <ReactBootstrap.NavDropdown.Item href="/:userId/newproject/:id">
                 Create New Project
               </ReactBootstrap.NavDropdown.Item>
               <ReactBootstrap.NavDropdown.Item href="#action/3.2">
