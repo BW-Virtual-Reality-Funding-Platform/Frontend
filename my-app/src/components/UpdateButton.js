@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import React, {useState} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import "../App.css";
@@ -19,14 +19,14 @@ const UpdateButton = (props) => {
     const [updateProject, setUpdateProject] = useState(projectSettings);
 
     const {id} = useParams()
-    const {projects_id} = useParams()
+    const {userID} = useParams()
     const history = useHistory()
     
   
       const handleSubmit = (event) => {
         event.preventDefault();
         axiosWithAuth()
-            .put(`/:userId/projects/${id}`, updateProject)
+            .put(`/${userID}/projects/${id}`, updateProject)
             .then(res => {
                 setUpdateProject(res.data);
                 history.push("/browse2")
@@ -102,16 +102,16 @@ const UpdateButton = (props) => {
                   <ul>
                   <li>
                     <label htmlFor="Name">Image:</label>
-                  <input className="image-input"
-                    id="ss"
+                  <input className="amount-input"
+                    id="img_url"
                     type="text"
-                    name="ss"
-                    placeholder="Please Enter the New Image:"
+                    name="img_url"
+                    placeholder="Please Enter the IMG:"
                     value={updateProject.img_url}
                     onChange={handleChange}
                   />
                   </li>
-                  </ul>
+                  </ul>       
 
 
 

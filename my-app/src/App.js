@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
 import LoginForm from "./components/LoginForm";
 import UpdateButton from "./components/UpdateButton";
+import ManageUser from "./components/ManageUser"
+import UpdateUser from "./components/UpdateUser"
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
           <Route path="/features" component={Features}>
             <Features />
           </Route>
-          <Route path="/browse2" component={Browse2}>
+          <Route path="/:userID/browse2" component={Browse2}>
             <Browse2 />
           </Route>
           <Route path="/moreinfo" component={MoreInfo}>
@@ -36,11 +38,17 @@ function App() {
           <Route path="/login" component={LoginForm}>
             <LoginForm/>
           </Route>
-          <Route path="/updateproject/:id" component={UpdateButton}>
+          <Route path="/:userID/updateproject/:id" component={UpdateButton}>
           <UpdateButton/>
           </Route>
-        </Switch>
-      </Router>
+          <Route path="/manageuser" component={ManageUser}>
+            <ManageUser/>
+          </Route>
+          <Route path="/updateuser" component={UpdateUser}>
+            <UpdateUser/>
+           </Route>
+          </Switch>
+         </Router>
     </div>
     </Router>
   );

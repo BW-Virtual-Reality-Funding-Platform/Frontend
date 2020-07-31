@@ -37,7 +37,7 @@ export default function LoginForm() {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
         setLoggedIn(true);
-        history.push("/browse");
+        history.push("/browse2");
       })
       .catch((err) => {
         console.log(err.message);
