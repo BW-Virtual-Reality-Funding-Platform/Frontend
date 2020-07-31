@@ -4,30 +4,27 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import "./Box.css";
 import { Card, ListGroupItem, ListGroup, Button } from "react-bootstrap";
 import {useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 
-const Browse2 = props => {
+const Browse2 = (props) => {
 
     const [projects, setProjects] = useState([])
-    const {userID} = useParams()
+    
+const userId = useParams()
 
     
-    const deleteProject = (e, userID) => {
-        axiosWithAuth()
-          .delete(`/projects/${userID}`)
-          .then(res => {
-            console.log(res.data)
-            const newProjects = projects.filter(item =>  item.userID !== userID)
-            setProjects({newProjects});
-          });
-      };
- 
+    
+
+
+
     useEffect(() => {
         axiosWithAuth()
-        .get(`/${userID}/projects`)
-            //.get(`https://vr-lambdaschool.herokuapp.com/projects`)
+        .get(`https://vr-lambdaschool.herokuapp.com/${props.userInfo.id}/projects `)
             .then(res => {
                 setProjects(res.data);
+                console.log(userId)
                 console.log(res);
             })
             .catch(err => {
@@ -39,7 +36,7 @@ const Browse2 = props => {
 
 
     return (
-        <div className="grid">
+        <div className="grid">blablablsa
             <h2 className="m-5">Your Projects:</h2>
 
             {projects.map((project) =>  
@@ -55,6 +52,7 @@ const Browse2 = props => {
                     <ListGroupItem>{project.goal_amount}</ListGroupItem>
                     <ListGroupItem>{project.amount_received}</ListGroupItem>
                     <ListGroupItem>{project.funding_completed}</ListGroupItem>
+                    <Link to={`/${props.userInfo.id}/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
                 </ListGroup>
                 <Button onClick={deleteProject}>Delete Project</Button>
                 </Card>

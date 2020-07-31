@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import Log from "./Log.jpg";
 
-export default function LoginForm() {
+export default function LoginForm(props) {
+
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
@@ -15,7 +16,6 @@ export default function LoginForm() {
   const [loggedIn, setLoggedIn] = useState(false);
   console.log(loggedIn)
   const history = useHistory();
-  console.log(loggedIn);
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.name]: e.target.value });
@@ -36,10 +36,11 @@ export default function LoginForm() {
     axiosWithAuth()
       .post("/auth/login", loginState)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.payload);
+        props.setUserInfo({...props.userInfo, id: res.data.userId})
+        console.log(res.data)
         setLoggedIn(true);
-        history.push("/browse");
+        history.push("/:userId/newproject");
       })
       .catch((err) => {
         console.log(err.message);

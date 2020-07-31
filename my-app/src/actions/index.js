@@ -3,7 +3,7 @@ import axios from "axios"
 
 export const PostRegister = (data) => {
     return dispatch => {
-        axios
+        axiosWithAuth()
             .post("https://vr-lambdaschool.herokuapp.com/api/auth/register", data)
             .then(res => {
                 console.log(res.data)

@@ -6,6 +6,8 @@ import { Form, Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import "./Signup.css";
 import Signing3 from "./Signing3.jpg";
+import { connect } from "react-redux";
+import { PostRegister } from "../actions/index";
 
 const signupParts = {
   username: "",
@@ -17,21 +19,17 @@ const Register = (props) => {
   const [registerUser, setRegisterUser] = useState(signupParts);
   const [user, setUser] = useState([]);
 
-  const register = (e) => {
+  const register = e => {
     e.preventDefault();
-    axiosWithAuth();
-    axios
-      .post(
-        "https://vr-lambdaschool.herokuapp.com/api/auth/register",
-        registerUser
-      )
-      .then((res) => {
-        console.log(res);
-        setUser([...user, res.data]);
-        history.push(`/login`);
-      })
-      .catch((err) => console.log({ err }));
-  };
+    props.PostRegister(registerUser);
+    history.push('/login');
+    setRegisterUser({
+
+        "username": "",
+        "password": ""
+
+    });
+}
 
   const changeHandler = (ev) => {
     ev.persist();
@@ -118,14 +116,14 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default connect(null, { PostRegister: PostRegister })(Register);
 
 // import { connect } from "react-redux";
 // import { PostRegister } from "../actions/index";
 
 //   const register = e => {
 //     e.preventDefault();
-//     PostRegister(registerUser);
+//     props.PostRegister(registerUser);
 //     history.push('/login');
 //     setRegisterUser({
 

@@ -13,14 +13,13 @@ const UpdateUser = (props) => {
     const [updateUser, setUpdateUser] = useState(userSettings);
 
     const {id} = useParams()
-    const {user} = useParams()
+    const {userID} = useParams()
     const history = useHistory()
   
       const handleSubmit = (event) => {
         event.preventDefault();
         axiosWithAuth()
-        axios
-            .put(`/api/users/${user.id}`, updateUser)
+            .put(`/users/${userID}`, updateUser)
             .then(res => {
                 setUpdateUser(res.data);
                 history.push("/login")

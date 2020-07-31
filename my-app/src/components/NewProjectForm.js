@@ -6,35 +6,42 @@ import "./NewProjectForm.css";
 import Image from "react-bootstrap/Image";
 import Project from "./Project.jpg";
 import {useParams} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+
 
 const formSchema = yup.object().shape({
-  projectImage: yup.string(),
-  projectTitle: yup.string().required("Project name is a required field."),
-  projectDescription: yup.string().required("Description is required"),
-  goalAmount: yup.string().required("Goal amount is required."),
-  amountReceived: yup.string(),
-  fundingCompleted: yup.boolean(),
+  img_url: yup.string(),
+  title: yup.string().required("Project name is a required field."),
+  description: yup.string(),
+  goal_amount: yup.string(),
+  amount_received: yup.string(),
+  funding_completed: yup.boolean(),
 });
 
-export default function NewProjectForm() {
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+export default function NewProjectForm(props) {
+//   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
-    projectImage: "",
-    projectTitle: "",
-    projectDescription: "",
-    goalAmount: "",
-    amountReceived: "",
-    fundingCompleted: "",
-  });
+    user_id: props.userInfo.id,
+    title: '',
+    description: '',
+    goal_amount: '',
+    amount_received: '',
+    img_url: '',
+    funding_completed: false,
+   
+});
 
   const [errors, setErrors] = useState({
-    projectImage: "",
-    projectTitle: "",
-    projectDescription: "",
-    goalAmount: "",
-    amountReceived: "",
-    fundingCompleted: "",
+    
+      user_id: props.userInfo.id,
+      title: '',
+      description: '',
+      goal_amount: '',
+      amount_received: '',
+      img_url: '',
+      funding_completed: false,
+     
   });
 
   const [post, setPost] = useState([]);
@@ -45,23 +52,32 @@ export default function NewProjectForm() {
     });
   }, [formState]);
 
+  const history = useHistory()
   const {userId} = useParams()
+  const {id} = useParams()
 
   const formSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post(`/${userId}/projects`)
+    
+      .post(`https://vr-lambdaschool.herokuapp.com/${props.userInfo.id}/projects`, formState)
       .then((res) => {
         setPost(res.data);
+        console.log(res.data)
         console.log("success", post);
+        history.push("/:userId/browse2")
+
         setFormState({
-          projectImage: "",
-          projectTitle: "",
-          projectDescription: "",
-          goalAmount: "",
-          amountReceived: "",
-          fundingCompleted: "",
-        });
+    
+      user_id: props.userInfo.id,
+      title: '',
+      description: '',
+      goal_amount: '',
+      amount_received: '',
+      img_url: '',
+      funding_completed: false,
+     
+  });
       });
   };
 
@@ -122,8 +138,8 @@ export default function NewProjectForm() {
             aria-label="Username"
             aria-describedby="basic-addon1"
             type="text"
-            name="projectImage"
-            value={formState.projectImage}
+            name="img_url"
+            value={formState.img_url}
             onChange={inputChange}
           />
         </InputGroup>
@@ -135,12 +151,12 @@ export default function NewProjectForm() {
             aria-label="Project Title"
             aria-describedby="basic-addon2"
             type="text"
-            name="projectTitle"
-            value={formState.projectTitle}
+            name="title"
+            value={formState.title}
             onChange={inputChange}
           />
-          {errors.projectTitle.length > 0 ? (
-            <p className="error">{errors.projectTitle}</p>
+          {errors.title.length > 0 ? (
+            <p className="error">{errors.name}</p>
           ) : null}
           <InputGroup.Append>
             <InputGroup.Text id="basic-addon2">PT</InputGroup.Text>
@@ -156,12 +172,12 @@ export default function NewProjectForm() {
             as="textarea"
             aria-label="With textarea"
             type="text"
-            name="projectDescription"
-            value={formState.projectDescription}
+            name="description"
+            value={formState.description}
             onChange={inputChange}
           />
-          {errors.projectDescription.length > 0 ? (
-            <p className="error">{errors.projectDescription}</p>
+          {errors.description.length > 0 ? (
+            <p className="error">{errors.name}</p>
           ) : null}
         </InputGroup>
 
@@ -173,12 +189,12 @@ export default function NewProjectForm() {
           <FormControl
             aria-label="Amount (to the nearest dollar)"
             type="text"
-            name="goalAmount"
-            value={formState.goalAmount}
+            name="goal_amount"
+            value={formState.goal_amount}
             onChange={inputChange}
           />
-          {errors.goalAmount.length > 0 ? (
-            <p className="error">{errors.goalAmount}</p>
+          {errors.goal_amount.length > 0 ? (
+            <p className="error">{errors.name}</p>
           ) : null}
           <InputGroup.Append>
             {/* <InputGroup.Text>.00</InputGroup.Text> */}
@@ -193,12 +209,12 @@ export default function NewProjectForm() {
           <FormControl
             aria-label="Amount (to the nearest dollar)"
             type="text"
-            name="amountReceived"
-            value={formState.amountReceived}
+            name="amount_received"
+            value={formState.amount_received}
             onChange={inputChange}
           />
-          {errors.amountReceived.length > 0 ? (
-            <p className="error">{errors.amountReceived}</p>
+          {errors.amount_received.length > 0 ? (
+            <p className="error">{errors.name}</p>
           ) : null}
           <InputGroup.Append>
             {/* <InputGroup.Text>.00</InputGroup.Text> */}
