@@ -63,7 +63,7 @@ const Register = (props) => {
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Username"
+            placeholder="Create Username"
             name="username"
             value={registerUser.username}
             onChange={changeHandler}
@@ -73,13 +73,13 @@ const Register = (props) => {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Enter Password"
+            placeholder="Create Password"
             name="password"
             value={registerUser.password}
             onChange={changeHandler}
           ></Form.Control>
         </Form.Group>
-        <Button variant="primary" type="submit">Sign Up</Button>
+        <Button variant="primary" className="submit-button" type="submit">Register</Button>
       </Form>
     </div>
 
