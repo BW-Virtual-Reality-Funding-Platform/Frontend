@@ -1,9 +1,6 @@
 
 import React, {useEffect, useState, useReducer} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import { connect } from "react-redux";
-import { getProjects } from "../actions";
-import {useParams} from 'react-router-dom';
 
 
 
@@ -12,12 +9,12 @@ const Browse2 = props => {
 
 
     const [proyects, setProyects] = useState([])
-    const {userID} = useParams()
+    const [stop, setStop] = useState(false)
 
  
     useEffect(() => {
         axiosWithAuth()
-            .get(`/${userID}/projects`)
+            .get(`https://vr-lambdaschool.herokuapp.com/projects`)
             .then(res => {
                 setProyects(res.data);
                 console.log(res);
@@ -25,7 +22,7 @@ const Browse2 = props => {
             .catch(err => {
                 console.log(err.message);
             });
-        }, []);
+        }, [stop]);
 
 
 
@@ -52,15 +49,10 @@ const Browse2 = props => {
     );
 }
 
-const mapStateToProps = state => {
-    return {
-      state
-    };
-  };
 
 /***************
  EXPORTS
  ***************/
-export default connect(mapStateToProps, {getProjects})(Browse2);
+export default Browse2;
 
 
