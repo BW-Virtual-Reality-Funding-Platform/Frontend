@@ -17,7 +17,7 @@ const formSchema = yup.object().shape({
 });
 
 export default function NewProjectForm() {
-//   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
     projectImage: "",
@@ -41,7 +41,7 @@ export default function NewProjectForm() {
 
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
-    //   setButtonDisabled(!valid);
+      setButtonDisabled(!valid);
     });
   }, [formState]);
 
@@ -207,7 +207,7 @@ export default function NewProjectForm() {
 
         <br></br>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disable={buttonDisabled} >
           Submit
         </Button>
       </Form>
