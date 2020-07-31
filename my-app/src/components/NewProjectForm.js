@@ -1,14 +1,15 @@
-  
 import React, { useState, useEffect } from "react";
 import { InputGroup, FormControl, Form, Button } from "react-bootstrap";
-import axios from "axios";
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 import * as yup from "yup";
 import "./NewProjectForm.css";
 import Image from "react-bootstrap/Image";
 import Project from "./Project.jpg";
+import {useParams} from 'react-router-dom'
 
 
 const formSchema = yup.object().shape({
+  projectImage: yup.string(),
   projectTitle: yup.string().required("Project name is a required field."),
   projectDescription: yup.string(),
   goalAmount: yup.string(),
@@ -17,9 +18,10 @@ const formSchema = yup.object().shape({
 });
 
 export default function NewProjectForm() {
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+//   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
+    projectImage: "",
     projectTitle: "",
     projectDescription: "",
     goalAmount: "",
@@ -28,6 +30,7 @@ export default function NewProjectForm() {
   });
 
   const [errors, setErrors] = useState({
+    projectImage: "",
     projectTitle: "",
     projectDescription: "",
     goalAmount: "",
@@ -38,19 +41,22 @@ export default function NewProjectForm() {
   const [post, setPost] = useState([]);
 
   useEffect(() => {
-    formSchema.isValid(formState).then(valid => {
-      setButtonDisabled(!valid);
+    formSchema.isValid(formState).then((valid) => {
+    //   setButtonDisabled(!valid);
     });
   }, [formState]);
 
+  const {userID} = useParams()
+
   const formSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://vr-lambdaschool.herokuapp.com/:userId/projects")
+    axiosWithAuth()
+      .post(`/${userID}/projects`)
       .then((res) => {
         setPost(res.data);
         console.log("success", post);
         setFormState({
+          projectImage: "",
           projectTitle: "",
           projectDescription: "",
           goalAmount: "",
@@ -107,17 +113,21 @@ export default function NewProjectForm() {
       </h6>
       <Form className="project-form" onSubmit={formSubmit}>
         <h1>Create New Project</h1>
-        {/* <label>Enter Username</label>
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              placeholder="Username"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
-          </InputGroup> */}
+        <label>Enter Username</label>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="basic-addon1">Image</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            placeholder="Paste Image URL"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            type="text"
+            name="projectImage"
+            value={formState.projectImage}
+            onChange={inputChange}
+          />
+        </InputGroup>
 
         <label>Project Title</label>
         <InputGroup className="mb-3">
@@ -198,7 +208,7 @@ export default function NewProjectForm() {
 
         <br></br>
 
-        <Button variant="primary" type="submit" disabled={buttonDisabled}>
+        <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>

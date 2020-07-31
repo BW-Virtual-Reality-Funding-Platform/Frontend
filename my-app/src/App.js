@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Browse2 from "./components/Browse2";
 import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
 import LoginForm from "./components/LoginForm";
 import UpdateButton from "./components/UpdateButton";
@@ -17,8 +17,6 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        {/* <NewProjectForm />
-      <LoginForm/> */}
         <Router>
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -44,7 +42,7 @@ function App() {
           <Route path="/manageuser" component={ManageUser}>
             <ManageUser/>
           </Route>
-          <Route path="/updateuser" component={UpdateUser}>
+          <Route path="/updateuser/:userID" component={UpdateUser}>
             <UpdateUser/>
            </Route>
           </Switch>
