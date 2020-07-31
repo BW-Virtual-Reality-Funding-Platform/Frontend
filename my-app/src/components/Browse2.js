@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import "./Box.css";
-import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
+import { Card, ListGroupItem, ListGroup, Button } from "react-bootstrap";
 import {useParams} from 'react-router-dom';
 
 
@@ -12,12 +12,20 @@ const Browse2 = props => {
     const {userID} = useParams()
 
     
-
+    const deleteProject = (e, userID) => {
+        axiosWithAuth()
+          .delete(`/projects/${userID}`)
+          .then(res => {
+            console.log(res.data)
+            const newProjects = projects.filter(item =>  item.userID !== userID)
+            setProjects({newProjects});
+          });
+      };
  
     useEffect(() => {
         axiosWithAuth()
         .get(`/${userID}/projects`)
-            // .get(`https://vr-lambdaschool.herokuapp.com/projects`)
+            //.get(`https://vr-lambdaschool.herokuapp.com/projects`)
             .then(res => {
                 setProjects(res.data);
                 console.log(res);
@@ -48,6 +56,7 @@ const Browse2 = props => {
                     <ListGroupItem>{project.amount_received}</ListGroupItem>
                     <ListGroupItem>{project.funding_completed}</ListGroupItem>
                 </ListGroup>
+                <Button onClick={deleteProject}>Delete Project</Button>
                 </Card>
                 </div>
             )}
