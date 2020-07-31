@@ -13,6 +13,7 @@ export default function LoginForm() {
   });
 
   const [loggedIn, setLoggedIn] = useState(false);
+  console.log(loggedIn)
   const history = useHistory();
   console.log(loggedIn);
 

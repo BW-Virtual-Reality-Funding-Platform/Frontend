@@ -11,6 +11,9 @@ const Browse2 = props => {
     const [projects, setProjects] = useState([])
     const {userID} = useParams()
 
+    
+
+ 
     useEffect(() => {
         axiosWithAuth()
         .get(`/${userID}/projects`)
@@ -23,7 +26,10 @@ const Browse2 = props => {
                 console.log(err.message);
             });
         }, []);
-        
+
+
+
+
     return (
         <div className="grid">
             <h2 className="m-5">Your Projects:</h2>
