@@ -10,8 +10,8 @@ import {useParams} from 'react-router-dom'
 const formSchema = yup.object().shape({
   projectImage: yup.string(),
   projectTitle: yup.string().required("Project name is a required field."),
-  projectDescription: yup.string(),
-  goalAmount: yup.string(),
+  projectDescription: yup.string().required("Description is required"),
+  goalAmount: yup.string().required("Goal amount is required."),
   amountReceived: yup.string(),
   fundingCompleted: yup.boolean(),
 });
@@ -140,7 +140,7 @@ export default function NewProjectForm() {
             onChange={inputChange}
           />
           {errors.projectTitle.length > 0 ? (
-            <p className="error">{errors.name}</p>
+            <p className="error">{errors.projectTitle}</p>
           ) : null}
           <InputGroup.Append>
             <InputGroup.Text id="basic-addon2">PT</InputGroup.Text>
@@ -161,7 +161,7 @@ export default function NewProjectForm() {
             onChange={inputChange}
           />
           {errors.projectDescription.length > 0 ? (
-            <p className="error">{errors.name}</p>
+            <p className="error">{errors.projectDescription}</p>
           ) : null}
         </InputGroup>
 
@@ -178,7 +178,7 @@ export default function NewProjectForm() {
             onChange={inputChange}
           />
           {errors.goalAmount.length > 0 ? (
-            <p className="error">{errors.name}</p>
+            <p className="error">{errors.goalAmount}</p>
           ) : null}
           <InputGroup.Append>
             {/* <InputGroup.Text>.00</InputGroup.Text> */}
@@ -198,7 +198,7 @@ export default function NewProjectForm() {
             onChange={inputChange}
           />
           {errors.amountReceived.length > 0 ? (
-            <p className="error">{errors.name}</p>
+            <p className="error">{errors.amountReceived}</p>
           ) : null}
           <InputGroup.Append>
             {/* <InputGroup.Text>.00</InputGroup.Text> */}
