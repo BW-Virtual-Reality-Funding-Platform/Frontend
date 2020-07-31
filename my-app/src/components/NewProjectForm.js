@@ -48,7 +48,7 @@ export default function NewProjectForm(props) {
 
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
-    //   setButtonDisabled(!valid);
+      setButtonDisabled(!valid);
     });
   }, [formState]);
 
@@ -223,7 +223,7 @@ export default function NewProjectForm(props) {
 
         <br></br>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disable={buttonDisabled} >
           Submit
         </Button>
       </Form>
