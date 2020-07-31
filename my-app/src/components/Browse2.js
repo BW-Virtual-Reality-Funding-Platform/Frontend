@@ -1,5 +1,5 @@
 
-import React, {useEffect, useState, useReducer} from 'react'
+import React, {useEffect, useState} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 
 
@@ -9,7 +9,7 @@ const Browse2 = props => {
 
 
     const [proyects, setProyects] = useState([])
-    const [stop, setStop] = useState(false)
+    
 
  
     useEffect(() => {
@@ -22,7 +22,7 @@ const Browse2 = props => {
             .catch(err => {
                 console.log(err.message);
             });
-        }, [stop]);
+        }, []);
 
 
 

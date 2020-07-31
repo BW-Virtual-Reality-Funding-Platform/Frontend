@@ -2,6 +2,10 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import "./Signup.css";
+import Signing3 from "./Signing3.jpg";
 
 const signupParts = {
   username: "",
@@ -40,37 +44,77 @@ const Register = (props) => {
 
   return (
     <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={register} className="formSignUp">
-        <ul>
-          <li>
-            <label htmlFor="Name">Username:</label>
-            <input
-              placeholder="Create Username"
-              type="text"
-              name="username"
-              value={registerUser.username}
-              onChange={changeHandler}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <label htmlFor="Name">Password:</label>
-            <input
-              placeholder="Create Password"
-              type="password"
-              name="password"
-              value={registerUser.password}
-              onChange={changeHandler}
-            />
-          </li>
-        </ul>
-        <button className="submit-button" type="submit">
-          Register
-        </button>
-      </form>
+      <Image className="signup-img" src={Signing3} />
+      <h6>
+        <span>
+          Photo by{" "}
+          <a href="https://unsplash.com/@judebeck?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Jude Beck
+          </a>{" "}
+          on{" "}
+          <a href="https://unsplash.com/s/photos/pen?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Unsplash
+          </a>
+        </span>
+      </h6>
+      <Form className="signup-form" onSubmit={register}>
+        <h1>Sign Up</h1>
+        <Form.Group>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Create Username"
+            name="username"
+            value={registerUser.username}
+            onChange={changeHandler}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Create Password"
+            name="password"
+            value={registerUser.password}
+            onChange={changeHandler}
+          ></Form.Control>
+        </Form.Group>
+        <Button variant="primary" className="submit-button" type="submit">Register</Button>
+      </Form>
     </div>
+
+    // <div>
+    //   <h1>Sign Up</h1>
+    //   <form onSubmit={register} className="formSignUp">
+    //     <ul>
+    //       <li>
+    //         <label htmlFor="Name">Username:</label>
+    //         <input
+    //           placeholder="Create Username"
+    //           type="text"
+    //           name="username"
+    //           value={registerUser.username}
+    //           onChange={changeHandler}
+    //         />
+    //       </li>
+    //     </ul>
+    //     <ul>
+    //       <li>
+    //         <label htmlFor="Name">Password:</label>
+    //         <input
+    //           placeholder="Create Password"
+    //           type="password"
+    //           name="password"
+    //           value={registerUser.password}
+    //           onChange={changeHandler}
+    //         />
+    //       </li>
+    //     </ul>
+    //     <button className="submit-button" type="submit">
+    //       Register
+    //     </button>
+    //   </form>
+    // </div>
   );
 };
 
