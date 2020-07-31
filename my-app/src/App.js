@@ -8,7 +8,7 @@ import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
-import NewProjectForm2 from "./components/NewProjectForm2";
+
 import LoginForm from "./components/LoginForm";
 import UpdateButton from "./components/UpdateButton";
 import ManageUser from "./components/ManageUser"
@@ -63,9 +63,7 @@ function App() {
            <Route path="/:userId/newproject" component={NewProjectForm}>
              <NewProjectForm userInfo={userInfo}/>
            </Route>
-           <Route path="/:userId/newproject2" component={NewProjectForm2}>
-             <NewProjectForm2 userInfo={userInfo}/>
-           </Route>
+      
           </Switch>
          </Router>
     </div>

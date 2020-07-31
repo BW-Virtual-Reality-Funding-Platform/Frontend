@@ -46,11 +46,7 @@ export default function NewProjectForm(props) {
 
   const [post, setPost] = useState([]);
 
-  useEffect(() => {
-    formSchema.isValid(formState).then((valid) => {
-      setButtonDisabled(!valid);
-    });
-  }, [formState]);
+
 
   const history = useHistory()
   const {userId} = useParams()
@@ -223,7 +219,7 @@ export default function NewProjectForm(props) {
 
         <br></br>
 
-        <Button variant="primary" type="submit" disable={buttonDisabled} >
+        <Button variant="primary" type="submit"  >
           Submit
         </Button>
       </Form>
