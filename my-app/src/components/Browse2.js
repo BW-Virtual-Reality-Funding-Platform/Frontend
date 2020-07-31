@@ -3,15 +3,18 @@ import React, {useEffect, useState} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import "./Box.css";
 import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
+import {useParams} from 'react-router-dom';
 
 
 const Browse2 = props => {
 
     const [projects, setProjects] = useState([])
+    const {userID} = useParams()
 
     useEffect(() => {
         axiosWithAuth()
-            .get(`https://vr-lambdaschool.herokuapp.com/projects`)
+        .get(`/${userID}/projects`)
+            // .get(`https://vr-lambdaschool.herokuapp.com/projects`)
             .then(res => {
                 setProjects(res.data);
                 console.log(res);
