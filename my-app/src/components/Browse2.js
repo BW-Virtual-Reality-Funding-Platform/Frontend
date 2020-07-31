@@ -25,7 +25,7 @@ const Browse2 = props => {
             .catch(err => {
                 console.log(err.message);
             });
-        }, []);
+        }, [userID]);
 
 
 
