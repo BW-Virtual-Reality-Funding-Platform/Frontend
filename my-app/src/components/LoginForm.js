@@ -40,7 +40,7 @@ export default function LoginForm(props) {
         props.setUserInfo({...props.userInfo, id: res.data.userId})
         console.log(res.data)
         setLoggedIn(true);
-        history.push("/:userId/browse2");
+        history.push("/:userId/newproject");
       })
       .catch((err) => {
         console.log(err.message);
