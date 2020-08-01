@@ -52,7 +52,7 @@ function App() {
             <LoginForm userInfo={userInfo} setUserInfo={setUserInfo} />
           </Route>
           <Route path="/:userId/updateproject/:id" component={UpdateButton}>
-          <UpdateButton/>
+          <UpdateButton userInfo={userInfo}/>
           </Route>
           <Route path="/manageuser" component={ManageUser}>
             <ManageUser/>

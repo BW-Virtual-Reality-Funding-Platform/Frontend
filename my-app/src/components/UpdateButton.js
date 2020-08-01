@@ -26,10 +26,10 @@ const UpdateButton = (props) => {
       const handleSubmit = (event) => {
         event.preventDefault();
         axiosWithAuth()
-            .put(`/${props.userInfo.id}/projects/${id}`, updateProject)
+            .put(`https://vr-lambdaschool.herokuapp.com/${props.userInfo.id}/projects/${id}`, updateProject)
             .then(res => {
                 setUpdateProject(res.data);
-                history.push(":userId/browse2")
+                history.push("/:userId/browse2")
                 console.log(res.data);
             })
             .catch(err => {
