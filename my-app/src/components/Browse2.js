@@ -11,10 +11,21 @@ import axios from 'axios'
 const Browse2 = (props) => {
 
     const [projects, setProjects] = useState([])
+    const [deleted, setDeleted] = useState(false)
     
 const userId = useParams()
 
-    
+const deleteProject = (id) => {
+    axiosWithAuth()
+      .delete(`https://vr-lambdaschool.herokuapp.com/projects/${id}`)
+      .then(res => {
+        console.log(res.data)
+        setDeleted(res.data)
+        // const newProjects = projects.filter(projects =>  projects.id !== id)
+        setDeleted(deleted);
+        
+      });
+  };
     
 
 
@@ -30,7 +41,7 @@ const userId = useParams()
             .catch(err => {
                 console.log(err.message);
             });
-        }, []);
+        }, [deleted]);
 
 
 
@@ -53,6 +64,7 @@ const userId = useParams()
                     <ListGroupItem>{project.amount_received}</ListGroupItem>
                     <ListGroupItem>{project.funding_completed}</ListGroupItem>
                     <Link to={`/${props.userInfo.id}/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
+                    <Button onClick={() => {deleteProject(project.id)}}>Delete Project</Button>
                 </ListGroup>
                 
                 </Card>
