@@ -23,23 +23,22 @@ export default function NewProjectForm(props) {
 
   const [formState, setFormState] = useState({
     user_id: props.userInfo.id,
+    img_url: '',
     title: '',
     description: '',
     goal_amount: '',
     amount_received: '',
-    img_url: '',
     funding_completed: false,
    
 });
 
   const [errors, setErrors] = useState({
-    
       user_id: props.userInfo.id,
+      img_url: '',
       title: '',
       description: '',
       goal_amount: '',
       amount_received: '',
-      img_url: '',
       funding_completed: false,
      
   });
@@ -64,13 +63,12 @@ export default function NewProjectForm(props) {
         history.push("/:userId/browse2")
 
         setFormState({
-    
       user_id: props.userInfo.id,
+      img_url: '',
       title: '',
       description: '',
       goal_amount: '',
       amount_received: '',
-      img_url: '',
       funding_completed: false,
      
   });
