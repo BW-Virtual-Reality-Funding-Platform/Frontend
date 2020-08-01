@@ -15,17 +15,7 @@ const Browse2 = (props) => {
     
 const userId = useParams()
 
-const deleteProject = (id) => {
-    axiosWithAuth()
-      .delete(`https://vr-lambdaschool.herokuapp.com/projects/${id}`)
-      .then(res => {
-        console.log(res.data)
-        setDeleted(res.data)
-        // const newProjects = projects.filter(projects =>  projects.id !== id)
-        setDeleted(deleted);
-        
-      });
-  };
+    
     
 
 
@@ -88,5 +78,6 @@ const deleteProject = (id) => {
  EXPORTS
  ***************/
 export default Browse2;
+
 
 
