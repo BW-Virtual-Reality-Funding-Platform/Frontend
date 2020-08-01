@@ -5,12 +5,13 @@ import "./Box.css";
 import { Card, ListGroupItem, ListGroup, Button } from "react-bootstrap";
 import {useParams} from 'react-router-dom';
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+
 
 
 const Browse2 = (props) => {
 
     const [projects, setProjects] = useState([])
+    const [deleted, setDeleted] = useState(false)
     
 const userId = useParams()
 
@@ -30,8 +31,17 @@ const userId = useParams()
             .catch(err => {
                 console.log(err.message);
             });
-        }, []);
+        }, [deleted]);
 
+        const deleteProject = (id) => {
+            axiosWithAuth()
+              .delete(`https://vr-lambdaschool.herokuapp.com/projects/${id}`)
+              .then(res => {
+                  console.log(res.data)
+                setDeleted(res.data)
+                setDeleted(deleted);
+              });
+          };
 
 
 
@@ -53,6 +63,7 @@ const userId = useParams()
                     <ListGroupItem>{project.amount_received}</ListGroupItem>
                     <ListGroupItem>{project.funding_completed}</ListGroupItem>
                     <Link to={`/${props.userInfo.id}/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
+                    <Button onClick={() => {deleteProject(project.project_id)}}>Delete Project</Button>
                 </ListGroup>
                 
                 </Card>
