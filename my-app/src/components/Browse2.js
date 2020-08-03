@@ -46,7 +46,7 @@ const userId = useParams()
 
 
     return (
-        <div className="grid">blablablsa
+        <div className="grid">
             <h2 className="m-5">Your Projects:</h2>
 
             {projects.map((project) =>  
