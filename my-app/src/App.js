@@ -8,7 +8,7 @@ import Features from "./components/Features";
 import MoreInfo from "./components/Moreinfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewProjectForm from "./components/NewProjectForm";
-
+import PrivateRoute from "./utils/PrivateRoute"
 import LoginForm from "./components/LoginForm";
 import UpdateButton from "./components/UpdateButton";
 import ManageUser from "./components/ManageUser"
@@ -39,9 +39,9 @@ function App() {
           <Route path="/features" component={Features}>
             <Features />
           </Route>
-          <Route path="/:userId/browse2" component={Browse2}>
+          <PrivateRoute path="/:userId/browse2" component={Browse2}>
             <Browse2 userInfo={userInfo} />
-          </Route>
+          </PrivateRoute>
           <Route path="/moreinfo" component={MoreInfo}>
             <MoreInfo />
           </Route>

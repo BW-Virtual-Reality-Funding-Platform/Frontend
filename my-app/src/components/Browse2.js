@@ -59,9 +59,9 @@ const userId = useParams()
                 </Card.Body>
                     <ListGroup className="list-group-flush">
                     <ListGroupItem>{project.description}</ListGroupItem>
-                    <ListGroupItem>{project.goal_amount}</ListGroupItem>
-                    <ListGroupItem>{project.amount_received}</ListGroupItem>
-                    <ListGroupItem>{project.funding_completed}</ListGroupItem>
+                    <ListGroupItem>Goal:    {project.goal_amount}</ListGroupItem>
+                    <ListGroupItem>Current Amount Received:   {project.amount_received}</ListGroupItem>
+
                     <Link to={`/${props.userInfo.id}/updateproject/${project.project_id}`}><button >UPDATE</button></Link>
                     <Button onClick={() => {deleteProject(project.project_id)}}>Delete Project</Button>
                 </ListGroup>
